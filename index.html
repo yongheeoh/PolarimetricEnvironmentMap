@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Real-world Polarimetric Environment Map Dataset (SIGGRAPH Asia 2026): a real-world dataset of polarimetric environment maps captured with a polarimetric camera and a motorized pan-tilt stage.">
+  <meta property="og:title" content="Real-world Polarimetric Environment Map Dataset">
+  <meta property="og:description" content="SIGGRAPH Asia 2026. A real-world dataset of polarimetric environment maps captured with a polarimetric camera and a motorized pan-tilt stage.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="keywords" content="Polarization, Environment Map, Dataset, Stokes, Inverse Rendering, Appearance Capture, SIGGRAPH Asia 2026">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Real-world Polarimetric Environment Map Dataset</title>
+
+  <!-- NOTE: Google Analytics from the Nerfies template has been removed on purpose.
+       If you want analytics, add your own gtag snippet here. -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <!-- Before/after comparison slider -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"/>
+  <link rel="stylesheet" href="./static/css/index.css?v=2620dbd99498">
+  <link rel="icon" type="image/png" href="./static/images/favicon.png">
+  <link rel="apple-touch-icon" href="./static/images/apple-touch-icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+  <script src="./static/js/index.js?v=6da02486cffc"></script>
+  <script defer src="./static/js/render-comparison.js?v=ab33ef71625b"></script>
+  <script defer src="./static/js/copy-citation.js?v=bc8ee8589ae6"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://yongheeoh.github.io/">
+        <span class="icon"><i class="fas fa-home"></i></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Real-world Polarimetric Environment Map Dataset</h1>
+          <h2 class="subtitle is-4" style="margin-top:-0.5rem;">SIGGRAPH Asia 2026</h2>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://yongheeoh.github.io/">Yonghee Oh</a><sup>*</sup>,</span>
+            <span class="author-block">
+              <a href="https://elerac.github.io/">Ryota Maeda</a><sup>*</sup>,</span>
+            <span class="author-block">
+              <a href="https://yunseong0518.github.io/">Yunseong Moon</a>,</span>
+            <span class="author-block">
+              <a href="https://www.shbaek.com/">Seung-Hwan Baek</a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">POSTECH</span>
+          </div>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal contribution</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="./"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="./"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="./" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-youtube"></i></span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/yongheeoh/PolarimetricEnvironmentMap"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon" aria-hidden="true"><img class="brand-icon brand-icon-github" src="./static/images/github.svg" alt=""></span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/yongheeoh/penvmap"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon" aria-hidden="true"><img class="brand-icon" src="./static/images/huggingface.svg" alt=""></span>
+                  <span>Data</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/teaser.jpg" alt="Polarimetric environment map teaser."/>
+      <h2 class="subtitle has-text-centered">
+        A real-world dataset of 100 full-sphere <b>HDR RGB-Stokes environment maps</b>,
+        captured with a dedicated imaging system and a polarization-aware, singularity-free
+        panorama-stitching pipeline.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- To switch this back to a swipeable carousel of several images/videos, replace the
+     block above with:
+  <section class="hero is-light is-small"><div class="hero-body"><div class="container">
+    <div id="results-carousel" class="carousel results-carousel">
+      <div class="item"><img src="./static/images/result1.jpg" alt="Result 1"/></div>
+      <div class="item"><img src="./static/images/result2.jpg" alt="Result 2"/></div>
+      ...
+    </div>
+  </div></div></section>
+-->
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Dataset -->
+    <div id="dataset" class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Polarimetric Environment Map dataset</h2>
+        <video class="dataset-video" autoplay muted loop playsinline controls
+               preload="metadata" poster="./static/images/dataset-poster.jpg"
+               width="1920" height="1080"
+               aria-label="Polarimetric Environment Map dataset overview">
+          <source src="./static/videos/dataset.mp4" type="video/mp4">
+          Your browser does not support embedded video.
+          <a href="./static/videos/dataset.mp4">Download the dataset overview video.</a>
+        </video>
+        <div class="content has-text-justified">
+          <p>
+            We provide full-sphere panoramas with per-pixel high-dynamic-range RGB Stokes vectors,
+            captured across 100 diverse real-world scenes. The dataset enables the development
+            and evaluation of polarization-based scene reconstruction and understanding under
+            in-the-wild illumination.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive rendering comparison -->
+    <div id="rendering-comparison" class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Polarized image-based rendering</h2>
+        <div class="render-viewer">
+          <div class="render-comparison" style="--split: 50%;" tabindex="0" aria-label="Rendering view. Drag to rotate or use left and right arrow keys.">
+            <img class="render-envmap" src="./static/images/render-comparison/s0/000-envmap.jpg" loading="lazy"
+                 alt="Rendering illuminated by Envmap" width="1024" height="1024" draggable="false">
+            <img class="render-penvmap" src="./static/images/render-comparison/s0/000-penvmap.jpg" loading="lazy"
+                 alt="Rendering illuminated by pEnvmap" width="1024" height="1024" draggable="false">
+            <canvas class="render-canvas" width="1024" height="1024" aria-hidden="true" hidden></canvas>
+            <div class="render-label-layer render-label-layer-left">
+              <span class="render-label render-label-left">pEnvmap</span>
+            </div>
+            <div class="render-label-layer render-label-layer-right">
+              <span class="render-label render-label-right">Envmap</span>
+            </div>
+            <span class="render-divider" aria-hidden="true"></span>
+            <span class="render-handle" role="slider" tabindex="0" aria-label="Comparison divider"
+                  aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"
+                  aria-valuetext="50% pEnvmap, 50% Envmap">&#8249;&nbsp;&#8250;</span>
+          </div>
+          <video class="render-motion" muted playsinline loop preload="auto" aria-hidden="true" hidden></video>
+          <p class="render-instructions">Drag to rotate &middot; Drag the divider to compare</p>
+          <div class="render-controls" role="group" aria-label="View rotation">
+            <button type="button" id="render-previous" aria-label="Previous view">&#8592;</button>
+            <button type="button" id="render-play" aria-pressed="false" aria-label="Auto rotate" title="Auto rotate">&#9654;</button>
+            <button type="button" id="render-next" aria-label="Next view">&#8594;</button>
+            <output id="render-view-number" aria-label="Current view">1 / 360</output>
+          </div>
+          <div class="render-components" role="group" aria-label="Polarization component">
+            <button type="button" data-component="s0" aria-pressed="true">s0</button>
+            <button type="button" data-component="s1n" aria-pressed="false">s1n</button>
+            <button type="button" data-component="s2n" aria-pressed="false">s2n</button>
+            <button type="button" data-component="s3n" aria-pressed="false">s3n</button>
+            <button type="button" data-component="aolp" aria-pressed="false">aolp</button>
+            <button type="button" data-component="dop" aria-pressed="false">dop</button>
+            <button type="button" data-component="cop" aria-pressed="false">cop</button>
+            <button type="button" data-component="top" aria-pressed="false">top</button>
+          </div>
+          <p class="render-error" role="alert" hidden>Images could not be loaded. Please try again.</p>
+        </div>
+        <p class="comparison-caption">
+          In contrast to conventional radiance-only environment maps, our polarimetric
+          environment maps produce rendered images exhibiting spatially varying
+          polarization effects that arise naturally from environmental lighting.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Citation</h2>
+    <p>If you use our dataset or code in your research, please cite:</p>
+    <div class="citation-box">
+      <button id="copy-citation" class="citation-copy" type="button"
+              aria-controls="citation-text" aria-live="polite">Copy</button>
+      <pre><code id="citation-text">@inproceedings{oh2026penvmap,
+  author    = {Oh, Yonghee and Maeda, Ryota and Moon, Yunseong and Baek, Seung-Hwan},
+  title     = {Real-world Polarimetric Environment Map Dataset},
+  booktitle = {SIGGRAPH Asia 2026 Conference Papers},
+  year      = {2026},
+  doi       = {10.1145/3829340.3842262},
+  url       = {https://doi.org/10.1145/3829340.3842262}
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="./static/pdfs/paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/yongheeoh" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            It borrows the <a href="https://github.com/nerfies/nerfies.github.io">source code</a>
+            of the <a href="https://nerfies.github.io/">Nerfies</a> project page.
+            We thank the authors for open-sourcing their template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
