@@ -1,0 +1,384 @@
+{
+  "schema": "penvmap calibration profile v1",
+  "category": "radiometric/nd",
+  "profile_id": "profile_20261016_135721",
+  "scope": "global",
+  "dataset_default": true,
+  "status": "selected global sun-ring transmission",
+  "selected_at": "2026-10-16T15:42:43+09:00",
+  "selection": {
+    "source": "User decision on 2026-10-16: use the sun-surrounding measurements and save as the global ND profile.",
+    "method": "Copy the accepted sun-ring candidate coefficients unchanged; do not blend with chart or manufacturer estimates.",
+    "previous_profile": "profile_20261015_134247",
+    "supersedes": "profile_20261015_134247",
+    "previous_profile_preserved": true,
+    "profile_id_note": "135721 is the latest contributing capture session; this profile uses both 132751 and 135721.",
+    "automatic_pipeline_loading": "Pending main.py / ISP.py integration; saving this JSON does not enable automatic loading."
+  },
+  "camera": {
+    "model": "FLIR Blackfly S BFS-U3-51S5PC",
+    "serial": "20356250",
+    "lens": "4 mm fisheye",
+    "aperture_f_number": 4.0
+  },
+  "filter": {
+    "nominal_od_available": [
+      2.0,
+      4.0
+    ],
+    "default_sun_od": 4.0,
+    "placement": "in front of the lens",
+    "application": "Sun shots near the image centre.",
+    "central_region_assumption": "ND-induced polarimetric distortion is assumed negligible near the image centre; this profile models only channel-wise transmission."
+  },
+  "input": "Exposure-normalized, linear camera BGR Stokes before WB/CCM.",
+  "use": "For the actual mounted OD, divide each BGR channel of S0/S1/S2 by transmission.ODx.T_BGR[c] BEFORE WB/CCM. This restores attenuation and channel ratios. Apply once. S3 is unmeasured and remains zero.",
+  "transmission": {
+    "channel_order": "BGR",
+    "T_units": "fraction, not percent",
+    "OD2": {
+      "T_BGR": [
+        0.009046985767781734,
+        0.00863815238699317,
+        0.008063228335231543
+      ],
+      "OD_BGR": [
+        2.0434960928908543,
+        2.063579138764268,
+        2.09349104163597
+      ],
+      "T_min_BGR": [
+        0.008948670700192451,
+        0.008556650020182133,
+        0.007925066165626049
+      ],
+      "T_max_BGR": [
+        0.009146889671683311,
+        0.008723599836230278,
+        0.008122216910123825
+      ],
+      "status": "measured reference; sun core saturated in these OD2 captures",
+      "nd_captures": [
+        "132751_11",
+        "132751_12",
+        "135721_1"
+      ],
+      "reference_captures": [
+        "132751_13",
+        "132751_13",
+        "135721_2"
+      ],
+      "num_nd_captures": 3,
+      "num_ring_estimates": 6,
+      "ring_to_chart_T_ratio_BGR": [
+        1.0354832954402442,
+        1.0431456177881337,
+        1.0735529936281436
+      ]
+    },
+    "OD4": {
+      "T_BGR": [
+        9.021589357871562e-05,
+        0.00010629614553181455,
+        0.00016291183419525623
+      ],
+      "OD_BGR": [
+        4.044716944880645,
+        3.9734824834034552,
+        3.788047366649004
+      ],
+      "T_min_BGR": [
+        8.88407084858045e-05,
+        0.00010327347263228148,
+        0.0001558416843181476
+      ],
+      "T_max_BGR": [
+        9.26683860598132e-05,
+        0.00010770390508696437,
+        0.00016457866877317429
+      ],
+      "status": "selected for sun reconstruction",
+      "nd_captures": [
+        "132751_9",
+        "132751_10",
+        "135721_0"
+      ],
+      "reference_captures": [
+        "132751_13",
+        "132751_13",
+        "135721_2"
+      ],
+      "num_nd_captures": 3,
+      "num_ring_estimates": 6,
+      "ring_to_chart_T_ratio_BGR": [
+        1.1313541736823767,
+        1.166211965192612,
+        1.2550671307814272
+      ]
+    }
+  },
+  "method": {
+    "estimator": "Median of 3 ND shots x two native-pixel rings (32..64 and 64..128); closest following no-ND reference",
+    "rings_native_pixels": [
+      [
+        32,
+        64
+      ],
+      [
+        64,
+        128
+      ]
+    ],
+    "radius_rule": "lower inclusive, upper exclusive, measured from the estimated sun centre",
+    "excluded_radius": "r < 32 and r >= 128 native sensor pixels",
+    "registration": "Translate the no-ND reference onto each ND shot using the sun-centre displacement.",
+    "sampling": "Float32 HDR, S0 = 2 * mean(four analyzer samples) per native 4x4 colour/polarization cell; average the two green blocks.",
+    "validity": "Every constituent RAW site must have at least one exposure with 0.01 <= raw/65535 <= 0.95 in both captures. Erode each channel validity mask by one 4x4 cell before resampling. Require finite positive reference S0.",
+    "aggregation": "Median ND/reference S0 ratio per ring per channel; then median across 3 ND captures x 2 rings per OD.",
+    "hdr_z_min": 0.01,
+    "hdr_z_max": 0.95,
+    "raw_full_scale": 65535,
+    "exposure_times": "measured exposure_times_s in bracket JSON",
+    "wb_ccm_applied": false,
+    "vignetting_applied": false,
+    "additional_brightness_normalization": false,
+    "demosaicing_for_fit": "None; direct float RAW blocks, no uint16 requantization."
+  },
+  "validation": {
+    "roi_masks_reproduced": {
+      "path": "analysis/20261016/sun_rois/verification.json",
+      "sha256": "027528fced83b0f00600dfe96e9f0a3ed05a9566a1d3cf3cae8923fb68a9a345"
+    },
+    "cross_session_ring_check": {
+      "OD2": {
+        "calibration_session": "20261016/132751",
+        "check_session": "20261016/135721",
+        "training_T_BGR": [
+          0.009013067930936813,
+          0.008614744991064072,
+          0.008006698451936245
+        ],
+        "check_session_T_BGR": [
+          0.009126255754381418,
+          0.008706204127520323,
+          0.008105197455734015
+        ],
+        "corrected_ring_residual_percent_BGR": [
+          1.2558190431040117,
+          1.061658082173289,
+          1.2302074867569068
+        ]
+      },
+      "OD4": {
+        "calibration_session": "20261016/132751",
+        "check_session": "20261016/135721",
+        "training_T_BGR": [
+          8.973790681920946e-05,
+          0.00010517157716094516,
+          0.00016063427028711885
+        ],
+        "check_session_T_BGR": [
+          9.137031156569719e-05,
+          0.00010746020416263491,
+          0.00016352533566532657
+        ],
+        "corrected_ring_residual_percent_BGR": [
+          1.8190804804222305,
+          2.176088885866423,
+          1.7997811880616776
+        ]
+      }
+    },
+    "cross_session_note": "The check excludes 135721 from coefficient fitting, but both sessions were captured on the same date. It does not validate the sun disc or transfer across dates.",
+    "shortest_exposure_saturation": [
+      {
+        "capture": "132751_10",
+        "nd_od": 4.0,
+        "shortest_exposure_s": 2.099999983329326e-05,
+        "raw_pixels_above_z_0_95": 0
+      },
+      {
+        "capture": "132751_11",
+        "nd_od": 2.0,
+        "shortest_exposure_s": 2.099999983329326e-05,
+        "raw_pixels_above_z_0_95": 162
+      },
+      {
+        "capture": "132751_12",
+        "nd_od": 2.0,
+        "shortest_exposure_s": 2.099999983329326e-05,
+        "raw_pixels_above_z_0_95": 160
+      },
+      {
+        "capture": "132751_13",
+        "nd_od": 0,
+        "shortest_exposure_s": 2.099999983329326e-05,
+        "raw_pixels_above_z_0_95": 1203
+      },
+      {
+        "capture": "132751_9",
+        "nd_od": 4.0,
+        "shortest_exposure_s": 2.099999983329326e-05,
+        "raw_pixels_above_z_0_95": 0
+      },
+      {
+        "capture": "135721_0",
+        "nd_od": 4.0,
+        "shortest_exposure_s": 2.099999983329326e-05,
+        "raw_pixels_above_z_0_95": 0
+      },
+      {
+        "capture": "135721_1",
+        "nd_od": 2.0,
+        "shortest_exposure_s": 2.099999983329326e-05,
+        "raw_pixels_above_z_0_95": 154
+      },
+      {
+        "capture": "135721_2",
+        "nd_od": 0,
+        "shortest_exposure_s": 2.099999983329326e-05,
+        "raw_pixels_above_z_0_95": 1199
+      }
+    ],
+    "coefficients_reproduced_from_six_ring_estimates_per_od": true,
+    "all_capture_source_hashes_verified": true
+  },
+  "uncertainty": {
+    "empirical_ranges": "T_min_BGR and T_max_BGR describe observed shot/ring variation, not confidence intervals or absolute accuracy.",
+    "sun_disc": "No-ND sun cores are saturated in these captures. Sun-ring agreement does not establish the transmission accuracy on the sun disc.",
+    "transfer": "Effective camera-channel transmission may vary with incident spectrum, filter angle/position, flare, and illumination changes between captures.",
+    "chart_disagreement": "Chart vs sun-ring differences remain unresolved. The sun-ring method is selected for the sun-envmap application."
+  },
+  "per_scene_check": "Use this global T as the fixed correction. If an unsaturated overlap/reference is available, compare scene sun-shot surroundings with the envmap and record residuals; do not silently replace T or normalize the sun brightness.",
+  "data": {
+    "sessions": [
+      "data/20261016/132751",
+      "data/20261016/135721"
+    ],
+    "source_candidate": {
+      "path": "analysis/20261016/candidates/sun_rings_20261016.json",
+      "sha256": "29212ae631a5cb81a3cc4f00147350978ba135d27db6fa29f6cdd3f64ca4a1bc"
+    },
+    "provenance_report": {
+      "path": "analysis/20261016/transmission_report.json",
+      "sha256": "6952bdb8491f5ead4fc481c28fe4b6027ca41b75afca68a61e1ea9e999adcc07"
+    },
+    "measurement_files": [
+      {
+        "path": "analysis/20261016/measurements/132751_10.json",
+        "sha256": "cbb26abd8ab5b70620cdd025fdf70ace6398d0934cf14120eec22a2b2e7731cc"
+      },
+      {
+        "path": "analysis/20261016/measurements/132751_11.json",
+        "sha256": "b4d3113b6cd6962e5534b20e51822d80770ed02be4d44ffdd3d27750ed2f1dcf"
+      },
+      {
+        "path": "analysis/20261016/measurements/132751_12.json",
+        "sha256": "0e993864260b858f0727949719fc7a89ef2ec2fa422023f2f158f7d93ec4e3fa"
+      },
+      {
+        "path": "analysis/20261016/measurements/132751_13.json",
+        "sha256": "0dcd61dd62566cd98812736d4853e3d2080b4a24098f9fedd60864304d59586c"
+      },
+      {
+        "path": "analysis/20261016/measurements/132751_9.json",
+        "sha256": "b04bc155530b6e34c46a0fe759b4da67a76f220603ef3554f391ceaf34ca1736"
+      },
+      {
+        "path": "analysis/20261016/measurements/135721_0.json",
+        "sha256": "c4cbea015e46e54d17990daf0dbfd5c333f3df65a6ab65d5df551247a2a226c2"
+      },
+      {
+        "path": "analysis/20261016/measurements/135721_1.json",
+        "sha256": "b8bd81c9d7900f47c7f38d276561e67f090e124b9ecb82f14f862bd63a71aba3"
+      },
+      {
+        "path": "analysis/20261016/measurements/135721_2.json",
+        "sha256": "24eb7d330946f6d1eeaf3c296bc2b49001aa612818c85fdb1286e0700170ee7f"
+      }
+    ],
+    "capture_files": [
+      {
+        "path": "data/20261016/132751/hdr/10.npy",
+        "sha256": "027a8fe65017b04f1f91c44198afa0263fe9d2f1e3afbacb141c4f7259dc0386"
+      },
+      {
+        "path": "data/20261016/132751/hdr/10.json",
+        "sha256": "cc0334f0602cba5cd37b7863fd177551bd1a633f1c06937e39d7babba5d675e0"
+      },
+      {
+        "path": "data/20261016/132751/meta/capture_meta.json",
+        "sha256": "be39b0f3ee612cc071e585b51f4e5f6f3e3af4961e861db7a7d8ff48b33fc1d8"
+      },
+      {
+        "path": "data/20261016/132751/hdr/11.npy",
+        "sha256": "95f111717520c1737bd3cbac3fd00c1c2f99c4bd150e4df609dc97f1bbcb358b"
+      },
+      {
+        "path": "data/20261016/132751/hdr/11.json",
+        "sha256": "cbdf3ee277b74b1a560701ad68fb0dedff7b6e65c30f369cbc0e29905c879fc7"
+      },
+      {
+        "path": "data/20261016/132751/hdr/12.npy",
+        "sha256": "0b6fa7e6962272a2746bf704cc28b1abb18846d7ea6dbf832a01bc94b6dd1ce7"
+      },
+      {
+        "path": "data/20261016/132751/hdr/12.json",
+        "sha256": "390efa63af343a3dedefeede3cf3a86009261f433eda89bdcbc3c1ca6e7246dd"
+      },
+      {
+        "path": "data/20261016/132751/hdr/13.npy",
+        "sha256": "4c7b001c4e1caaba9ef5121c50cbccd15a8cab7eff83803bf0d7296ef502d135"
+      },
+      {
+        "path": "data/20261016/132751/hdr/13.json",
+        "sha256": "355affe45728c8f2f3001f33004c56286f0c03eab0f29ed06ad2f905a351729d"
+      },
+      {
+        "path": "data/20261016/132751/hdr/9.npy",
+        "sha256": "24c5c404a6ded5e4167c8fffb8bf1825da87113e39610b8496fb4c3f13fb02d8"
+      },
+      {
+        "path": "data/20261016/132751/hdr/9.json",
+        "sha256": "e837415b5174e1e21459ba3ba014d97753ec5b00e1facd266acef602af24d379"
+      },
+      {
+        "path": "data/20261016/135721/hdr/0.npy",
+        "sha256": "b35ade3bc8a89245189659d55e5f83c6a779bcfcca9d153ea3bb751c6915b00d"
+      },
+      {
+        "path": "data/20261016/135721/hdr/0.json",
+        "sha256": "239dec079cb7bd96b037d79d3db7e559e8fe656395ae07a43e73b03fdf8c8275"
+      },
+      {
+        "path": "data/20261016/135721/meta/capture_meta.json",
+        "sha256": "833073411333eb9d366592cdf635e07ed2820078698cae0cbc7449b5e65c27cb"
+      },
+      {
+        "path": "data/20261016/135721/hdr/1.npy",
+        "sha256": "84a4dbaa65ca159d1bd1d53b164c53419be9dab93442a3437180f8c94569e5ce"
+      },
+      {
+        "path": "data/20261016/135721/hdr/1.json",
+        "sha256": "2b3d966fb8bded45996c39d9666d647be31c1d31c7d16cd60aee285dab41b2c1"
+      },
+      {
+        "path": "data/20261016/135721/hdr/2.npy",
+        "sha256": "52d086ca9191304756693da27940655f58c902b77922290953490188dd6b6038"
+      },
+      {
+        "path": "data/20261016/135721/hdr/2.json",
+        "sha256": "236a347f0606e129802d5596d39f9222761e3ee3cba1fee2af27100fbbe3729f"
+      }
+    ],
+    "roi_figures": "analysis/20261016/sun_rois",
+    "exr_comparison": "analysis/20261016/exr_compare",
+    "alternative_method_comparison": "analysis/20261016/manufacturer_spectral/manufacturer_rgb_approximation.json"
+  },
+  "history": [
+    {
+      "at": "2026-10-16T15:42:43+09:00",
+      "action": "Selected the sun-ring candidate as global ND profile; kept the previous profile and analysis inputs unchanged."
+    }
+  ]
+}

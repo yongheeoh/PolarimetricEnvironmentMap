@@ -1,0 +1,240 @@
+{
+  "profile_id": "profile_20261017_193937",
+  "calibration_type": "intrinsic",
+  "scope": "global",
+  "status": "validated_candidate",
+  "default_installed": false,
+  "camera": "flir",
+  "camera_serial": "20356250",
+  "camera_matrix": {
+    "type": "ndarray",
+    "values": [
+      [
+        1189.5522673733044,
+        0.0,
+        1223.6256175136555
+      ],
+      [
+        0.0,
+        1190.6772644008397,
+        1045.727780933254
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "dtype": "<f8"
+  },
+  "dist_coeffs": {
+    "type": "ndarray",
+    "values": [
+      -0.2522103788705447,
+      0.11646581704455733,
+      -0.00019343980035909787,
+      -9.407055550680317e-05,
+      -0.02673830323431623
+    ],
+    "dtype": "<f8"
+  },
+  "width": 2448,
+  "height": 2048,
+  "model": "opencv_brown_conrady",
+  "distortion_order": [
+    "k1",
+    "k2",
+    "p1",
+    "p2",
+    "k3"
+  ],
+  "coordinates": "Original unrotated RAW sensor pixels; x right, y down; no crop or resize.",
+  "source_session": "193937",
+  "capture_date_local": "20261017",
+  "capture_conditions": {
+    "aperture_f_number": 4.0,
+    "aperture_source": "session annotations.notes",
+    "focus_unchanged_from_nodal": null,
+    "nd_filter_present": null,
+    "diffuser_present": null,
+    "unconfirmed_conditions_note": "Asked user; not recorded in capture metadata."
+  },
+  "board": {
+    "observed_complete_inner_corners": [
+      24,
+      17
+    ],
+    "inferred_complete_squares": [
+      25,
+      18
+    ],
+    "square_size_mm": 30.0,
+    "object_point_unit": "one square",
+    "origins": "Independent local rectangular-grid origins per view; not a common physical board pose.",
+    "confirmed_squares": [
+      18,
+      25
+    ],
+    "confirmed_inner_corners": [
+      17,
+      24
+    ],
+    "square_size_source": "User confirmation on 2026-10-17",
+    "object_point_unit_mm": 30.0
+  },
+  "detection": {
+    "method": "OpenCV findChessboardCornersSBWithMeta; larger/partial grids with geometry gate",
+    "source": "One RAW exposure per capture; 2x2 analyser average; half-resolution green channel",
+    "coordinate_conversion": "raw_xy = 2 * detected_half_xy + 0.5",
+    "pose_count": 86,
+    "corner_count": 31073,
+    "ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85
+    ]
+  },
+  "fit": {
+    "rms_raw_px": 0.6180041780828327,
+    "median_view_rms_raw_px": 0.5108089137029463,
+    "max_view_rms_raw_px": 2.041265172061567,
+    "five_fold_heldout_rms_raw_px": 0.6225401611051256,
+    "old_intrinsic_rms_same_points_raw_px": 1.831897355934249,
+    "std_intrinsics_formal_opencv": [
+      0.17159495911655098,
+      0.17092228356728742,
+      0.11363188691520218,
+      0.12559773511675498,
+      0.00011155010368256755,
+      0.0001603469401261167,
+      6.878054376963577e-06,
+      6.763177578447964e-06,
+      6.714327373538305e-05,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "uncertainty_note": "Formal solver standard errors exclude board flatness, print accuracy and detector systematics."
+  },
+  "mapping_validation": {
+    "max_observed_distorted_radius_raw_px": 1243.5412756031683,
+    "max_observed_normalized_radius": 1.3756160046835364,
+    "minimum_radial_derivative_within_observed_range": 0.38517836475303,
+    "max_iterated_roundtrip_px": 9.779711566628324e-13
+  },
+  "limitations": [
+    "Calibration is measured only where board corners were observed; maximum radius is not complete angular coverage.",
+    "Do not extrapolate this polynomial across black lens borders or beyond the observed support.",
+    "The closest-view group has higher residuals; physical board flatness/printing accuracy was not independently measured.",
+    "For precise inverse rays use iterative convergence, not the default five undistortPoints iterations."
+  ],
+  "analysis_dir": "20261017_193937",
+  "result_dir": "profile_20261017_193937",
+  "reproducibility": {
+    "script": "calibrate_flir_intrinsic.py",
+    "script_sha256": "173fc4202997b03ed2efb418929663d4ab3b7091a7a17b67f4e3af1e6dbac9c9",
+    "opencv_version": "4.13.0",
+    "numpy_version": "2.4.4",
+    "git_commit": "5024269a258789ce0a5e079c5a4282fc907e156f",
+    "git_worktree_dirty": true,
+    "session_metadata_sha256": "26eae8be6f4cc8179fab45dde49137256f7a33ee891a2963b66318bd40a150b7"
+  },
+  "metadata_amendments": [
+    {
+      "date_local": "2026-10-17",
+      "reason": "User confirmed square size and board dimensions; metadata only, no numerical refit.",
+      "previous_session_metadata_sha256": "26eae8be6f4cc8179fab45dde49137256f7a33ee891a2963b66318bd40a150b7",
+      "updated_session_metadata_sha256": "9ee74eeff7d11fa277e0e6baee2b5b0171b6603714d1af7df761c85303a3ba94",
+      "pose_translation_unit": "one square = 30 mm; existing stored translations were not rescaled"
+    }
+  ]
+}

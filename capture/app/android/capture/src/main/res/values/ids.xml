@@ -1,0 +1,8 @@
+<resources>
+    <item name="experiment_name" type="id" />
+    <item name="preview_card" type="id" />
+    <item name="bracket_card" type="id" />
+    <item name="scene_slot" type="id" />
+    <item name="aim_panel" type="id" />
+    <item name="aim_actions" type="id" />
+</resources>

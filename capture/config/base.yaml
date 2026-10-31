@@ -1,0 +1,20 @@
+# Shared PC scene capture settings. Override with KEY=VALUE on the command line.
+base_dir: "${oc.env:PENVMAP_DATA_DIR,./data}"
+experiment_name: test
+camera_index: 0
+gain: 0
+# Both sensors use the same HDR controls and bracket size.
+bracket_max_us: 344064
+num_brackets: 8
+raw_max: null
+mount_roll_deg: 90.0
+save_raw_png: true
+settle_s: 0.2
+settle_frames: 2
+capture_delay: 0.001
+mecha_url: http://192.168.8.1
+stage_settle_yaw_s: 0.2
+stage_settle_pitch_s: 0.2
+aim_step_deg: 5.0
+yaw_degs: [0, 60, 120, 180, 240, 300]
+pitch_degs: [-45, 0, 45]

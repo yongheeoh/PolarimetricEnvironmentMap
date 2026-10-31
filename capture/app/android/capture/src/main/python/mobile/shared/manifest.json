@@ -1,0 +1,231 @@
+{
+  "s2l2.py": {
+    "sources": [
+      {
+        "source_sha256": "8ca66d30148e2053b603ddd8fa3dcfa3a8e46ff5a7b1731c02abb057c40ee053",
+        "source_relative": "pemap/polarization/s2l2_reference.py"
+      }
+    ],
+    "bundled_sha256": "ca166395738bd5bd690b28f4b80110a19880836ea83023ba126640728450432a"
+  },
+  "mueller.py": {
+    "sources": [
+      {
+        "source_sha256": "ce6a107f2fb80f038884752a58df5d1ee605ae78067e92f7d7344e9ec8c9896b",
+        "source_relative": "pemap/polarization/mueller_reference.py"
+      }
+    ],
+    "bundled_sha256": "ce6a107f2fb80f038884752a58df5d1ee605ae78067e92f7d7344e9ec8c9896b"
+  },
+  "min_rot.py": {
+    "sources": [
+      {
+        "source_sha256": "91f3058bf57b6bfc5eeede6aab3b51d43514ea7095a912bf6d6da0182d038aff",
+        "source_relative": "pemap/polarization/min_rot.py"
+      }
+    ],
+    "bundled_sha256": "91f3058bf57b6bfc5eeede6aab3b51d43514ea7095a912bf6d6da0182d038aff"
+  },
+  "hdr.py": {
+    "sources": [
+      {
+        "source_sha256": "9e4c7f43f4bb34ea3b2704ca38fec1040dbe6663f1eac811e6aa88184589871e",
+        "source_relative": "pemap/sensor/hdr.py"
+      }
+    ],
+    "bundled_sha256": "9e4c7f43f4bb34ea3b2704ca38fec1040dbe6663f1eac811e6aa88184589871e"
+  },
+  "s0.py": {
+    "sources": [
+      {
+        "source_sha256": "4632a64eb0874ded0728f9aa084d0d8bb963fffd16f7ebd2dca58437ec5ef413",
+        "source_relative": "pemap/sensor/s0.py"
+      }
+    ],
+    "bundled_sha256": "4632a64eb0874ded0728f9aa084d0d8bb963fffd16f7ebd2dca58437ec5ef413"
+  },
+  "scene_layout.py": {
+    "sources": [
+      {
+        "source_sha256": "b7e1f76f4efb9d35a7844b717b76c8a5db6d1a77b1f696ab38531bb84bea4cdd",
+        "source_relative": "pemap/io/layout.py"
+      }
+    ],
+    "bundled_sha256": "b7e1f76f4efb9d35a7844b717b76c8a5db6d1a77b1f696ab38531bb84bea4cdd"
+  },
+  "scene_nd.py": {
+    "sources": [
+      {
+        "source_sha256": "5f13850f00bd550ec54428777e080a4a98cc91aeb548875aa9730427ba74e343",
+        "source_relative": "pemap/radiometry/nd.py"
+      }
+    ],
+    "bundled_sha256": "5f13850f00bd550ec54428777e080a4a98cc91aeb548875aa9730427ba74e343"
+  },
+  "floor_photometry.py": {
+    "sources": [
+      {
+        "source_sha256": "d081b654d0c84eef6bcca0c35eb8958d54b706e2fe2ed11546c2f2335c1f4d17",
+        "source_relative": "pemap/radiometry/overlap.py"
+      }
+    ],
+    "bundled_sha256": "d081b654d0c84eef6bcca0c35eb8958d54b706e2fe2ed11546c2f2335c1f4d17"
+  },
+  "scene_color.py": {
+    "sources": [
+      {
+        "source_sha256": "803733a356575aff8af26e3b5afd601cf6f2c30732b1f8d2e6f59d509e4bfded",
+        "source_relative": "pemap/radiometry/color_profile.py"
+      }
+    ],
+    "bundled_sha256": "803733a356575aff8af26e3b5afd601cf6f2c30732b1f8d2e6f59d509e4bfded"
+  },
+  "display.py": {
+    "sources": [
+      {
+        "source_sha256": "2222167332c9c24f8479d66bf4a468773cf8e74da660ce1bd8d61806054b00b5",
+        "source_relative": "pemap/io/display.py"
+      }
+    ],
+    "bundled_sha256": "2222167332c9c24f8479d66bf4a468773cf8e74da660ce1bd8d61806054b00b5"
+  },
+  "floor_geometry.py": {
+    "sources": [
+      {
+        "source_sha256": "f0e7f4480fb3f37124e87243017f590e0fb6fce186c18742208ef296da589385",
+        "source_relative": "pemap/geometry/floor_pose.py"
+      },
+      {
+        "source_sha256": "fbd7719e533a0acf56ecf6f6a10fbffad176597b9485ec596b29e6838f4bf187",
+        "source_relative": "pemap/polarization/transport.py"
+      }
+    ],
+    "bundled_sha256": "7dd70cc08374614e9d936cb6c56e835f9bf595696805c5c51ec7ed5d512a662c"
+  },
+  "composition.py": {
+    "sources": [
+      {
+        "source_sha256": "fc976660831e39e18ab46dbc64ea66621b91efbcd54e0c372a829ca157e63f65",
+        "source_relative": "pemap/composition/__init__.py"
+      },
+      {
+        "source_sha256": "899d3f4d170184f34b84515bc2000adabb33afabb90df2b07fe911ebf70e312d",
+        "source_relative": "pemap/io/analysis.py"
+      }
+    ],
+    "bundled_sha256": "8ed65a6223be51614ea875906603ec233c3778cd728c36c1b2fe49098f78f474"
+  },
+  "scene_math.py": {
+    "sources": [
+      {
+        "source_sha256": "534d096574a35956442f85b284d6a224ed42ce7b5e59e809b25cf98aac664c4d",
+        "source_relative": "pemap/geometry/projection.py"
+      },
+      {
+        "source_sha256": "1a3032fef843eaa5053b917d597da47d07456816244de60479617dca6622735f",
+        "source_relative": "pemap/geometry/rays.py"
+      },
+      {
+        "source_sha256": "e9925c2e1b050af453032b1b564a6bfea770c86d96882831083591880a238fc9",
+        "source_relative": "pemap/polarization/validation.py"
+      },
+      {
+        "source_sha256": "c5f811f35abc0a523aee376265834db13861ac11c5da0e2c03e78d24d473d9ee",
+        "source_relative": "pemap/blending/boundary.py"
+      },
+      {
+        "source_sha256": "913b873a9a9262d9af171399000f565aba9da54ce16a0ac7e96b639bfd6ce3a5",
+        "source_relative": "pemap/blending/poisson.py"
+      },
+      {
+        "source_sha256": "f754dc8f74d658fc0e6e2b65d05ef12fc6dbb13cb85bcf79d3b2329c3257302c",
+        "source_relative": "pemap/blending/transition.py"
+      }
+    ],
+    "bundled_sha256": "7f171c969ddaf0b00ccc940c5fd3c595702432c9d55804cc244fe71c74d09f74"
+  },
+  "profiles.py": {
+    "sources": [
+      {
+        "source_sha256": "4cb65ef8a3f6a99cc412110c17b82d5e085db3ea83d0c9905d081066a18e4b6c",
+        "source_relative": "pemap/io/files.py"
+      },
+      {
+        "source_sha256": "88fec6179ddbec86a95f64e6a57e75161a1fe87c426f2d845ff588ce9db565c9",
+        "source_relative": "pemap/io/images.py"
+      },
+      {
+        "source_sha256": "9b0a789b1b61992a5135e89aea23c0b643240f7b65600b4c11e8f07dc048ff38",
+        "source_relative": "pemap/radiometry/chart.py"
+      },
+      {
+        "source_sha256": "7fb686c0f3e5aafa056976124ee06f0e78c10d8551d19b07217ce182505bbb3d",
+        "source_relative": "pemap/masking/estimate.py"
+      }
+    ],
+    "bundled_sha256": "9d522277f1631dc56d5ce34ed117182b69f408ff3575bf4cd8e3ff6e5a4ac0d3"
+  },
+  "chart_fit.py": {
+    "sources": [
+      {
+        "source_sha256": "8cedeb231bbcaa883f861eac48345f3142a815d9640b509bbdd2a84a19f44268",
+        "source_relative": "pemap/radiometry/chart_fit.py"
+      }
+    ],
+    "bundled_sha256": "e964d87648619e84a0d41e6530d491fcb0fc260b8691921c02388d23bce53e35"
+  },
+  "registration.py": {
+    "sources": [
+      {
+        "source_sha256": "fd31f12d10b0f3954783aa17ed1fff7df572691fcb3e07ca35df2cf817063314",
+        "source_relative": "pemap/registration/floor_registration.py"
+      }
+    ],
+    "bundled_sha256": "1dfb04b1835ebb925c1f8319221ee577edf48110c68d3de2bf7c833789281b15"
+  },
+  "floor.py": {
+    "sources": [
+      {
+        "source_sha256": "37b82496e832102759e6591b61b2c619cefeab8ac5226849bb82d167238bb29f",
+        "source_relative": "pemap/composition/floor.py"
+      }
+    ],
+    "bundled_sha256": "fa0c8e4300c76822c13501b6fb9e58a6794e56218361c5a75938395328e4a9a4"
+  },
+  "sun.py": {
+    "sources": [
+      {
+        "source_sha256": "74128948e4d6e37a25e1aba585c9b680dbde94bfa9d40b5629ddc2f203981f64",
+        "source_relative": "pemap/composition/sun.py"
+      }
+    ],
+    "bundled_sha256": "68c07b452f2982d7911262adb1cc367a81d333c478d8c3e74724a673db95a878"
+  },
+  "bilinear.py": {
+    "sources": [
+      {
+        "source_sha256": "6619ea1e87d8dbb5b1820aa2e2b26ae5fba3ccef545cada9452e1595ad380509",
+        "package_source": "polanalyser/demosaicing/bilinear.py"
+      }
+    ],
+    "bundled_sha256": "553684f50a9aa77c8c4f2ec368f8ba9712c82db4e6e934ef1869ed0579fc72b8"
+  },
+  "__init__.py": {
+    "sources": [
+      {
+        "source_sha256": "9f0a808cee1a3e339bb30d06f141610b5dcbe5795d6cd2fa4daff1e17695727a",
+        "source_relative": "capture/app/tools/sync_processing.py"
+      }
+    ],
+    "bundled_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "kernels.py": {
+    "sources": [
+      {
+        "source_sha256": "9f0a808cee1a3e339bb30d06f141610b5dcbe5795d6cd2fa4daff1e17695727a",
+        "source_relative": "capture/app/tools/sync_processing.py"
+      }
+    ],
+    "bundled_sha256": "3db1deab042dc7ac3ff120eb9fc7c151a3b5f117f0150763113b2a3570e66db3"
+  }
+}

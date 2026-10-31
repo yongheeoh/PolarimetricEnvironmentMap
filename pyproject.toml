@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "polarimetricenvironemtmap"
+version = "0.1.0"
+description = "Real-world Polarimetric Environment Map Dataset"
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "matplotlib>=3.10.8",
+    "networkx>=3.4.2",
+    "numpy",
+    "numba>=0.65.1",
+    "opencv-python>=4.13.0.92",
+    "openimageio>=3.1.12.0",
+    "polanalyser>=3.0.0",
+    "pyyaml>=6.0",
+    "scipy>=1.15.3",
+    "scikit-image",
+    "torch>=2.11.0",
+    "torchvision>=0.26.0",
+    "tqdm>=4.67.3",
+    "vismatch>=1.2.1",
+]
+
+[project.optional-dependencies]
+capture = ["omegaconf>=2.3.0", "requests>=2"]
+
+[tool.uv.sources]
+polanalyser = { git = "https://github.com/elerac/polanalyser.git", rev = "next" }
+torch = [
+    { index = "pytorch-cu130", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+torchvision = [
+    { index = "pytorch-cu130", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[tool.setuptools]
+py-modules = ["main"]
+include-package-data = false
+
+[tool.setuptools.package-dir]
+pemap = "pemap"
+capture = "capture"
+
+[tool.setuptools.package-data]
+capture = ["config/*.yaml"]
+"pemap.sensor.full_stokes_cam" = ["data/*.npy"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pemap*", "capture", "capture.hardware*"]
+
+[tool.black]
+line-length = 240

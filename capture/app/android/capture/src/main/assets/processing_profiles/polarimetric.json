@@ -1,0 +1,64 @@
+{
+  "schema": "penvmap calibration profile v1",
+  "category": "polarimetric",
+  "profile_id": "profile_20261008_161356",
+  "camera": {
+    "model": "FLIR Blackfly S BFS-U3-51S5PC (Sony on-chip 0/45/90/135 deg polarizers, RGB)"
+  },
+  "parameters": {
+    "FLIR_ANGLE_OFFSET_DEG": 0.0,
+    "FLIR_FLIP_S2": false,
+    "code": "pemap/flir.py (main.py / ISP.py read these)"
+  },
+  "demosaicing": "polanalyser as is: pa.demosaicing(COLOR_PolarRGB) (bilinear) -> pa.calcStokes(0/45/90/135 deg); S3 = 0",
+  "stokes_frame": "angle measured from image x (right) increasing toward image UP (= main.py measurement frame, e2 ~ -y_cam); light direction = incident; mount roll 90 deg handled by rvec (R_c2w) in main.py for both cameras",
+  "evidence": {
+    "method": "same linear polarizing film shot with FLIR and Basler (reference: Basler pcalib), horizontal and tilted",
+    "sessions": {
+      "161356": "FLIR, film horizontal",
+      "161500": "Basler, film horizontal",
+      "161555": "FLIR, film tilted",
+      "161656": "Basler, film tilted"
+    },
+    "aolp_inside_film_deg": {
+      "horizontal": {
+        "FLIR_offset0": [
+          -88.1,
+          -87.6
+        ],
+        "Basler_pcalib": [
+          -87.5,
+          -87.2
+        ],
+        "sign": "S1 negative on both"
+      },
+      "tilted": {
+        "FLIR_offset0": [
+          44.5,
+          44.7
+        ],
+        "Basler_pcalib": [
+          46.7,
+          46.8
+        ],
+        "sign": "S2 positive on both"
+      }
+    },
+    "conclusion": "S1 and S2 signs agree with offset 0 deg (offset 90 deg flips both). ~2 deg difference = roll difference between the two mounts.",
+    "independent_checks": [
+      "floor specular reflection in FLIR/test/20261007/201956 is s-polarized (horizontal) only with offset 0",
+      "lens-front ND radial false polarization (radiometric/nd/data/20261008/201539) matches theory only with angles increasing toward image up"
+    ],
+    "demosaiced": "data/20261008/<session>/wb_cc/result/0.exr (pa.imwrite_stokes; FLIR with offset 0)"
+  },
+  "known_limitations": {
+    "dolp_of_film": "FLIR 0.80-0.89 vs Basler 0.96-1.0 on the same film -> on-chip polarizer extinction ratio limit; not corrected",
+    "aperture": "sky DoLP drops ~4% from f/11 to f/4 (10/14: 0.335 / 0.329 / 0.322) -> possibly extinction ratio vs cone angle; check at f/4",
+    "status": "angle reference only; no extinction-ratio / per-pixel polarimetric calibration (user: probably not needed with bilinear demosaicing)"
+  },
+  "data": {
+    "sessions": "data/20261008/{161356,161500,161555,161656}",
+    "notes_md": "repo capture/memo.md (FLIR polarization convention confirmed on 2026-10-08)"
+  },
+  "history": "captured and decided 2026-10-08; moved from FLIR/before/test/20261008 on 2026-10-15"
+}

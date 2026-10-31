@@ -1,0 +1,101 @@
+# Processing controls for main.py. Input/output/shared paths are relative to this YAML.
+# Both collections use <collection>/raw/<scene_id> with sibling calibration/.
+# In cameras: calibration_root is relative to the input scene; profile files are relative to that root.
+# null = use the selected dataset/calibration profile's value.
+input:
+  scene: null
+  camera: auto                  # auto, basler, flir
+  calibration_root: null        # null: use cameras.<camera>.calibration_root below
+output:
+  directory: null               # null: write inside the scene
+  mode: full                    # full or s0 (quick preview)
+  envmap_size: null              # [width, height]; null: full 2048x1024, s0 1024x512
+polarization:
+  stokes_repr_mode: s2l2         # s2l2, duff, thetaphi: representation DURING warp/blending
+  rotation_model: min_rot        # min_rot, mitsuba3, none (unrotated diagnostic)
+radiometry:
+  color_source: auto             # auto: scene fit/profile fallback; profile: use profiles.wb_cc directly
+  apply_wb: null                # null: honor selected WB/CCM profile
+  apply_ccm: null
+  scale: null                   # common override; otherwise camera-specific profile
+  z_min: null
+  z_max: null
+  vignetting: null
+  vignetting_alpha: 1.0
+  flir_angle_offset_deg: null
+  flir_flip_s2: null
+geometry:
+  resize_scale: 1.0              # resize Stokes AFTER native RAW recovery; (0, 1]
+  pitches: [-45, 0, 45]         # fallback blocks only when capture JSON has no pitch
+  optimize_camera_rotations: true
+  camera_rotation_matchers:
+    - sift-lightglue
+    - superpoint-lightglue
+    - aliked-lightglue
+    - gim-lightglue
+    - xfeat-lightglue
+blending:
+  method: multiband
+  level: 5
+  domain_rotation_preset: octahedral  # octahedral or none
+sun:
+  enabled: true
+  radius: 8.0
+  mask_mode: adaptive            # adaptive or fixed
+floor:
+  enabled: true
+  photometry: smooth             # smooth or scalar
+  transition: 35.0
+runtime:
+  max_workers: 1                 # concurrent RAW recovery; more workers need more RAM
+  cache: false                   # reuse persistent recovered Stokes/pose caches across runs
+  keep_work: false
+  minimal_analysis: false
+  refit_color: false
+profiles: {}                     # Optional shared defaults; camera paths below override these
+cameras:                         # Explicit per-camera files; CLI --profile still overrides these
+  basler:
+    calibration_root: '../../calibration'
+    profiles:
+      intrinsic: 'geometric/intrinsics.json'
+      hdr: 'photometric/hdr.json'
+      polarimetric: 'polarimetric/pcalib_tensor.npy'
+      wb_cc: 'white_balance/{scene_id}.json'  # e.g. raw/2 -> 2.json
+      nd: null                   # No Basler ND calibration is supplied; required only for Sun captures
+      mask: 'capture_masks/mask_0.png'  # also loads sibling mask_-45/45.png
+      vignetting: 'vignetting/correction_map1.exr'
+    # These release scenes use map2 instead of map1 (matches metadata.csv).
+    # Scene IDs 74/87/98 have no distributed RAW or corresponding WB/map files.
+    scene_profiles:
+      '63': {vignetting: 'vignetting/correction_map2.exr'}
+      '64': {vignetting: 'vignetting/correction_map2.exr'}
+      '65': {vignetting: 'vignetting/correction_map2.exr'}
+      '66': {vignetting: 'vignetting/correction_map2.exr'}
+      '67': {vignetting: 'vignetting/correction_map2.exr'}
+      '68': {vignetting: 'vignetting/correction_map2.exr'}
+      '69': {vignetting: 'vignetting/correction_map2.exr'}
+      '70': {vignetting: 'vignetting/correction_map2.exr'}
+      '71': {vignetting: 'vignetting/correction_map2.exr'}
+      '72': {vignetting: 'vignetting/correction_map2.exr'}
+      '73': {vignetting: 'vignetting/correction_map2.exr'}
+    scale: null                  # output_scale.SCALE in the HDR JSON above
+    pcalib: null                 # tensor already specified under profiles.polarimetric
+  flir:
+    calibration_root: '../../calibration'
+    profiles:
+      intrinsic: 'geometric/intrinsics.json'
+      hdr: 'photometric/hdr.json'
+      polarimetric: 'polarimetric/convention.json'
+      wb_cc: 'white_balance/{scene_id}.json'
+      nd: 'radiometric/nd_transmission.json'
+      mask: 'capture_masks/mask_0.png'
+      vignetting: null             # No validated FLIR vignetting map is distributed.
+    scale: null                  # output_scale.FLIR_SCALE in the HDR JSON above
+numerics:                        # null: inherit dataset processing_config.yaml
+  source_rays: null
+  rotation_dtype: null
+  intrinsic_dtype: null
+  feature_color: null
+  mask_boundary: null
+  projection_support: null
+  radiometric_order: null

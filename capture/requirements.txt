@@ -1,0 +1,7 @@
+# For a camera SDK environment running capture from the source checkout.
+numpy>=1.23
+opencv-python>=4.5
+omegaconf>=2.3
+requests>=2
+# Install the platform-specific vendor SDK separately:
+# FLIR: Spinnaker/PySpin + EasyPySpin; Basler: pypylon.

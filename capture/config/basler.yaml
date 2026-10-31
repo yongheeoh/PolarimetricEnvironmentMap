@@ -1,0 +1,5 @@
+# Basler Full-Stokes camera via pypylon; actual exposure is read back from the camera.
+camera: basler
+pixel_format: BayerRG8
+# null resolves ExposureTime.GetMin() after the RAW camera mode is configured.
+bracket_min_us: null

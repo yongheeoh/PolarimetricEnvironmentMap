@@ -1,0 +1,7 @@
+# FLIR color polarization camera via Spinnaker/EasyPySpin.
+camera: flir
+pixel_format: BayerRG16
+flir_black_level_clamping: true
+flir_defect_correct_static: true
+flir_bracket_mode: sequencer
+bracket_min_us: 21

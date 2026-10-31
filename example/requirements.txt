@@ -1,0 +1,4 @@
+# Install notebook support into each processing/rendering kernel environment.
+ipykernel>=6.29
+jupyterlab>=4
+matplotlib>=3.6

@@ -1,0 +1,317 @@
+{
+  "schema": "penvmap calibration profile v1",
+  "category": "photometric/vignetting",
+  "profile_id": "profile_20261017_150930",
+  "scope": "global f/4 candidate",
+  "status": "Candidate radial profile; held-out scene overlap checked; full-frame flatness not established",
+  "dataset_default": false,
+  "created_at": "2026-10-17T06:46:40.213145+00:00",
+  "camera": {
+    "model": "Blackfly S BFS-U3-51S5PC",
+    "serial": "20356250",
+    "device_version": "1811.1.15.0",
+    "manufacturer": "FLIR",
+    "usb_link": "SuperSpeed (USB 3.x)"
+  },
+  "capture_conditions": {
+    "aperture_f_number": 4.0,
+    "nd_filter_present": false,
+    "target": "White board illuminated by LED",
+    "diffuser": "Placed in front of the lens",
+    "within_session": "Camera and illumination positions fixed; only maximum bracket exposure changed",
+    "source": "User confirmed in conversation on 2026-10-17",
+    "distance_m": {
+      "150930": 2,
+      "151347": 2,
+      "151643": 2,
+      "152042": 1,
+      "152341": 1,
+      "152551": 1
+    },
+    "LED_level": {
+      "150930": "max",
+      "151347": "middle",
+      "151643": "low",
+      "152042": "low",
+      "152341": "middle",
+      "152551": "max"
+    }
+  },
+  "source_sessions": [
+    "data/20261017/150930",
+    "data/20261017/151347",
+    "data/20261017/151643"
+  ],
+  "validation_sessions": [
+    "data/20261017/152042",
+    "data/20261017/152341",
+    "data/20261017/152551"
+  ],
+  "fit": {
+    "model": "V_c(r)=1+a2_c*(r/1000)^2+a4_c*(r/1000)^4+a6_c*(r/1000)^6; correction=1/V_c",
+    "channel_order": "BGR",
+    "coefficients_a2_a4_a6_by_BGR": [
+      [
+        -0.3213648911354564,
+        -0.3766650182568142,
+        -0.4444862724554415
+      ],
+      [
+        0.05783521538587188,
+        0.05557523340297361,
+        0.11873530272859
+      ],
+      [
+        -0.04868059806057958,
+        -0.024039450988274074,
+        -0.046481352856645376
+      ]
+    ],
+    "center_xy_raw_px": [
+      1244.362379385706,
+      1020.138309574701
+    ],
+    "fit_radius_raw_px": 1000.0,
+    "statistic": "Median of 7 normalized HDR measurements per session, then 40px annular medians; median of 3 two-metre sessions, equal radial-bin weights, robust fit.",
+    "selection_reason": "The 2m radial curves agree across LED levels more closely than the 1m mid/max captures. 1m captures remain validation data.",
+    "directional_structure": "Not baked into correction: directional brightness patterns vary across conditions; lens, illumination and diffuser contributions are not independently separated.",
+    "outside_fit_radius": "Gain is held at its r=1000 value. This avoids extrapolation/divergence but is not a calibrated correction outside validated_region.png."
+  },
+  "correction_map": "result\\profile_20261017_150930\\correction_map.exr",
+  "map": {
+    "path": "correction_map.exr",
+    "sha256": "8fd1aaf95d815f68bb47c33a3bb19a68fd389e2d146d4efb2c5888178961ea1a"
+  },
+  "validated_region_mask": "result\\profile_20261017_150930\\validated_region.png",
+  "image_size_wh": [
+    2448,
+    2048
+  ],
+  "apply": "Multiply the same positive BGR gain into S0,S1,S2,S3 after HDR/float demosaicing and before WB/CCM, projection and blending. No gamma, clipping or per-image brightness normalization.",
+  "pemap_parameter": "vignetting_path=<profile root>/correction_map, vignetting_alpha=1",
+  "preprocessing": "Per-shot exposure_times_s; RAW/65535 -> HDR with z_min=.01,z_max=.95; twice 4x4 color/analyzer-block means -> 16x16 RAW-grid averages. No WB/CCM, vignetting correction, demosaicing, or integer quantization.",
+  "metrics": {
+    "150930": {
+      "role": "fit",
+      "radial_error_before_p95_percent_BGR": [
+        27.136661529541016,
+        30.534610748291016,
+        33.271602630615234
+      ],
+      "radial_error_after_p95_percent_BGR": [
+        0.7536456692264035,
+        0.7617803244917318,
+        1.0850851551818284
+      ],
+      "spatial_error_before_p95_percent_BGR": [
+        36.438568115234375,
+        38.915733337402344,
+        41.10767364501953
+      ],
+      "spatial_error_after_p95_percent_BGR": [
+        15.60305142206955,
+        14.74619201079501,
+        14.302932383306967
+      ]
+    },
+    "151347": {
+      "role": "fit",
+      "radial_error_before_p95_percent_BGR": [
+        26.935274124145508,
+        30.191394805908203,
+        32.753421783447266
+      ],
+      "radial_error_after_p95_percent_BGR": [
+        0.7208091915459234,
+        0.6475280989304698,
+        0.5090097558110962
+      ],
+      "spatial_error_before_p95_percent_BGR": [
+        36.538490295410156,
+        38.77928924560547,
+        40.97676467895508
+      ],
+      "spatial_error_after_p95_percent_BGR": [
+        17.692458382306498,
+        17.047952339551994,
+        16.71602716991458
+      ]
+    },
+    "151643": {
+      "role": "fit",
+      "radial_error_before_p95_percent_BGR": [
+        26.798498153686523,
+        30.240461349487305,
+        32.53848648071289
+      ],
+      "radial_error_after_p95_percent_BGR": [
+        1.228233941146637,
+        1.2608524891594541,
+        1.0703592366123882
+      ],
+      "spatial_error_before_p95_percent_BGR": [
+        36.634979248046875,
+        39.04627990722656,
+        40.98688888549805
+      ],
+      "spatial_error_after_p95_percent_BGR": [
+        20.255952526605974,
+        20.112775492464483,
+        20.215594082990965
+      ]
+    },
+    "152042": {
+      "role": "held-out distance / lighting check",
+      "radial_error_before_p95_percent_BGR": [
+        25.410388946533203,
+        28.791812896728516,
+        31.553768157958984
+      ],
+      "radial_error_after_p95_percent_BGR": [
+        1.599804111752412,
+        1.823481662060343,
+        1.4173547251922418
+      ],
+      "spatial_error_before_p95_percent_BGR": [
+        35.89854431152344,
+        38.10868835449219,
+        40.41162872314453
+      ],
+      "spatial_error_after_p95_percent_BGR": [
+        18.085091023656563,
+        17.569292761679737,
+        17.077942337514646
+      ]
+    },
+    "152341": {
+      "role": "held-out distance / lighting check",
+      "radial_error_before_p95_percent_BGR": [
+        29.058324813842773,
+        32.81089401245117,
+        36.113399505615234
+      ],
+      "radial_error_after_p95_percent_BGR": [
+        3.3662482934536597,
+        4.095349050795804,
+        5.300027551309252
+      ],
+      "spatial_error_before_p95_percent_BGR": [
+        35.95618438720703,
+        38.907859802246094,
+        41.5425910949707
+      ],
+      "spatial_error_after_p95_percent_BGR": [
+        16.482621753353577,
+        16.340857467312865,
+        16.334250279667504
+      ]
+    },
+    "152551": {
+      "role": "held-out distance / lighting check",
+      "radial_error_before_p95_percent_BGR": [
+        28.932584762573242,
+        33.00566482543945,
+        36.200164794921875
+      ],
+      "radial_error_after_p95_percent_BGR": [
+        3.2140261899413125,
+        4.294353359349893,
+        5.529592230481377
+      ],
+      "spatial_error_before_p95_percent_BGR": [
+        35.8302001953125,
+        39.03639602661133,
+        41.733760833740234
+      ],
+      "spatial_error_after_p95_percent_BGR": [
+        16.34368840772222,
+        16.386253538185485,
+        16.54828252127074
+      ]
+    }
+  },
+  "correction_BGR_at_radius": {
+    "0": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "400": [
+      1.052783619516849,
+      1.0626339199761194,
+      1.0732706497606597
+    ],
+    "600": [
+      1.1241855879525677,
+      1.1487894138617925,
+      1.17205208541718
+    ],
+    "800": [
+      1.2418434986362756,
+      1.289663261390639,
+      1.329826213047491
+    ],
+    "1000": [
+      1.4539327383380998,
+      1.527018848193544,
+      1.5929459830034114
+    ]
+  },
+  "provenance": [
+    {
+      "path": "capture_quality.json",
+      "sha256": "ea7fe66540144b6e04902c0fc7d1fd1dd95919849e4196dbacf7aa9fdfde742e"
+    },
+    {
+      "path": "capture_conditions.json",
+      "sha256": "cd69cc2b057cdf6da0e64e6695f0b5cee4692ff4cdab5ef19cc813393c37234d"
+    },
+    {
+      "path": "samples.npz",
+      "sha256": "f6c0be367fd335e5bbda17f29834e561c70744cf5572e35b531df936e5b0d731"
+    },
+    {
+      "path": "fit_flir_vignetting.py",
+      "sha256": "9c836ac2104b655d748935131c7b5d0a7ae886dabaf8de2d049bd818110fd028"
+    }
+  ],
+  "limitations": [
+    "White-board illumination and diffuser angular response were not measured independently; radial common illumination can remain in the estimated lens profile.",
+    "Fitting a radial profile deliberately leaves directional brightness variation and dust/occlusion structure uncorrected.",
+    "Profile is validated only within radius 1000 RAW pixels at fixed f/4 and no ND. Diffuser is a calibration aid, not an additional component for normal captures.",
+    "Not an aperture-independent or full-frame flat-field calibration; corners outside the image circle cannot be recovered by gain.",
+    "WB/CCM and ND profiles were fitted previously without vignetting correction and are held fixed for the comparison."
+  ],
+  "validation": {
+    "EXR_float32_readback_exact": true,
+    "positive_monotone_relative_illumination": true,
+    "normalized_Stokes_preserved_by_gain": true
+  },
+  "references": [
+    "https://docs.baslerweb.com/knowledge/performing-flat-field-correction-using-pylon-vtools",
+    "https://www.edmundoptics.com/knowledge-center/application-notes/imaging/sensor-relative-illumination-roll-off-and-vignetting/"
+  ],
+  "independent_scene_validation": {
+    "source": {
+      "path": "overlap_check.json",
+      "sha256": "6eb189014f9c7cb7993a8e6f28c75317c91b8bb21c8c9525c06ec6ca0130b5d0"
+    },
+    "before_median_abs_EV_BGR": [
+      0.2347503900527954,
+      0.2717131972312927,
+      0.3017708659172058
+    ],
+    "after_median_abs_EV_BGR": [
+      0.1083591878414154,
+      0.1117057353258133,
+      0.11875942349433899
+    ],
+    "pair_count": 60,
+    "pairs_with_lower_median_error_BGR": [
+      56,
+      60,
+      60
+    ],
+    "scope": "Same-view overlap comparison within RAW radius1000; does not isolate illumination or diffuser response in the flat captures."
+  }
+}

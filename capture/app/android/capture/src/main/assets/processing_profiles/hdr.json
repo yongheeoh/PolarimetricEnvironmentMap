@@ -1,0 +1,133 @@
+{
+  "schema": "penvmap calibration profile v1",
+  "category": "photometric/hdr",
+  "profile_id": "profile_20261012_191644",
+  "camera": {
+    "model": "FLIR Blackfly S BFS-U3-51S5PC",
+    "serial": "20356250",
+    "settings": "BayerRG16, ADC Bit12, gain 0 dB, BlackLevel 0, BlackLevelClamping on, DefectCorrectStatic on, gamma / auto off"
+  },
+  "valid_for": "this camera + settings; independent of aperture / lens / ND (sensor property)",
+  "hdr_merge": {
+    "function": "pemap/hdr.py: fuse_exposure_bracket",
+    "bracket_us": [
+      21.0,
+      84.0,
+      336.0,
+      1344.0,
+      5376.0,
+      21504.0,
+      86016.0,
+      344064.0
+    ],
+    "bracket_rule": "21 us x 4^k, 8 frames (2 EV steps); very dark scenes may double the longest",
+    "z_min": 0.01,
+    "z_max": 0.95,
+    "range_ev": 20.57,
+    "range_ev_if_z_min_0.05": 18.25,
+    "weights": "Gaussian inside [z_min, z_max]; all frames > z_max -> z_max / t_min (lower bound); all < z_min -> z_min / t_max",
+    "exposure_time_source": "chunk ExposureTime per frame (exposure_times_s in the stack json)"
+  },
+  "output_scale": {
+    "FLIR_SCALE": 0.001344,
+    "definition": "t_ref / 2 with t_ref = 2.688 ms (geometric centre of the bracket); /2 because FLIR S0 = 2 x one polarizer pixel",
+    "s0_saturation_limit_per_channel": 121.6,
+    "s0_floor": 7.8e-05,
+    "code": "pemap/flir.py"
+  },
+  "sensor": {
+    "min_exposure_us": {
+      "BayerRG16_Bit12": 21.0,
+      "BayerRG8_Bit10": 20.0,
+      "verified": "2026-10-14 on the camera (Spinnaker, OutOfRange below)"
+    },
+    "max_exposure_s": 30.0,
+    "exposure_offset_us_median": 0.211,
+    "exposure_offset_note": "actual integration ~0.2-0.35 us longer than reported -> 21 us frame ~1-1.5% bright",
+    "gain_dn_per_e": 0.4068,
+    "e_per_dn": 2.4583,
+    "full_well_e": 10067,
+    "snr_at_z_min": {
+      "0.05": 22.4,
+      "0.03": 17.4,
+      "0.02": 14.2,
+      "0.01": 10.0,
+      "0.005": 7.1
+    },
+    "linearity": "within +-1.5% down to ~20 DN (12-bit); z = 0.01 ~ 41 DN",
+    "dark_dn_12bit": [
+      {
+        "t_s": 2.1e-05,
+        "mean": 1.048,
+        "std": 0.239,
+        "p999": 3.0,
+        "hot_frac_gt10": 2.592996834150327e-06,
+        "hot_frac_gt50": 0.0
+      },
+      {
+        "t_s": 0.000126,
+        "mean": 1.044,
+        "std": 0.23,
+        "p999": 3.0,
+        "hot_frac_gt10": 3.5903033088235294e-06,
+        "hot_frac_gt50": 0.0
+      },
+      {
+        "t_s": 0.000744,
+        "mean": 1.045,
+        "std": 0.232,
+        "p999": 3.0,
+        "hot_frac_gt10": 2.991919424019608e-06,
+        "hot_frac_gt50": 0.0
+      },
+      {
+        "t_s": 0.004422,
+        "mean": 1.046,
+        "std": 0.235,
+        "p999": 3.0,
+        "hot_frac_gt10": 3.3908420138888887e-06,
+        "hot_frac_gt50": 0.0
+      },
+      {
+        "t_s": 0.026283,
+        "mean": 1.049,
+        "std": 0.242,
+        "p999": 3.0,
+        "hot_frac_gt10": 3.78976460375817e-06,
+        "hot_frac_gt50": 1.9946129493464053e-07
+      },
+      {
+        "t_s": 0.156307,
+        "mean": 1.069,
+        "std": 0.361,
+        "p999": 4.0,
+        "hot_frac_gt10": 3.809710733251634e-05,
+        "hot_frac_gt50": 2.3935355392156862e-06
+      },
+      {
+        "t_s": 0.929693,
+        "mean": 1.07,
+        "std": 1.405,
+        "p999": 7.0,
+        "hot_frac_gt10": 0.0005662706163194445,
+        "hot_frac_gt50": 4.7072865604575166e-05
+      },
+      {
+        "t_s": 5.529598,
+        "mean": 1.27,
+        "std": 6.826,
+        "p999": 41.0,
+        "hot_frac_gt10": 0.0029998978758169936,
+        "hot_frac_gt50": 0.0007031010646446078
+      }
+    ]
+  },
+  "data": {
+    "dark_frames": "data/20261012/191644 (lens cap, bracket 21 us - 5.53 s, 8 frames)",
+    "linearity_scene": "data/20261012/144706 (15 bracket pairs of a static scene, 21 us - 21.5 ms)",
+    "report": "report/ (01_dark_frames, 02_linearity, 03_photon_transfer, 04_hdr_range .png, summary.json = raw output)",
+    "code": "repo calibration/hdr/sensor_report.py",
+    "notes_md": "repo calibration/hdr/HDR.md (sections 1-4)"
+  },
+  "history": "measured 2026-10-12; moved from FLIR/before/calibration/hdr + FLIR/before/HDR_test on 2026-10-15"
+}

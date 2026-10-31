@@ -1,0 +1,66 @@
+# ── Data / output folders ────────────────────────────────────────────────────
+visualization/
+validation/
+**/debugging/
+**/TODO/
+
+# ── Hydra outputs ─────────────────────────────────────────────────────────────
+outputs/
+.hydra/
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+.pytest_cache/
+pytest-cache-files-*/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+build/
+dist/
+wheels/
+*.egg-info
+
+# ── Virtual environments ──────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+.claude/settings.local.json
+*.code-workspace
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Jupyter ───────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+!example/*.ipynb
+
+# ── Misc ──────────────────────────────────────────────────────────────────────
+*.log
+*.tmp
+
+data
+!penmap/data/
+!pemap/sensor/full_stokes_cam/data/
+!pemap/sensor/full_stokes_cam/data/*
+!calibration/polarimetric/full_stokes_cam/data/
+!calibration/polarimetric/full_stokes_cam/data/*
+data_local
+output
+
+# Example inputs/results stay in the dataset, not in the source repository.
+/example/output/
+/example/raw/
+/example/calibration/
+/penvmap_mitsuba3/.mitsuba-build.json
+
+# Kept locally; not part of the source release.
+/calibration/
+/penvmap_mitsuba3/external/

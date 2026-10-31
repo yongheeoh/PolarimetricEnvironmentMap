@@ -1,0 +1,6 @@
+# Use a Python version matching the custom compiled Mitsuba binary.
+numpy
+typing_extensions; python_version < "3.11"
+OpenImageIO
+polanalyser @ git+https://github.com/elerac/polanalyser.git@efaa0a823748dea01a69b66e846c07e3e4bb6328
+# Mitsuba/drjit come from compile_mitsuba3.py, not a stock pip Mitsuba install.

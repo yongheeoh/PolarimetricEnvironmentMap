@@ -1,0 +1,37 @@
+{
+  "intrinsic": {
+    "relative_path": "geometric/intrinsic/profile_20261017_193937.json",
+    "source_sha256": "69cc3dbfe2cb4ce72d3ac8337d21406b271765f5746aba47c556fc8264cb8312",
+    "sha256": "a59db8d2854902ab1365219ec13c3fd653a1d9663ce6327d440afa5b5dcd38eb"
+  },
+  "hdr": {
+    "relative_path": "photometric/hdr/profile_20261012_191644.json",
+    "source_sha256": "1b50218a1242c478dceb91b2ba2f17e6e2b3bde0a9a8d8ac97d531f608a2f8b5",
+    "sha256": "7f155ab9a1f7416f5e42d2471ffe564e26411f949aa6af30280056acc949267a"
+  },
+  "polarimetric": {
+    "relative_path": "polarimetric/profile_20261008_161356.json",
+    "source_sha256": "bd7e229f8e3e6376b14f76e8984bac734aa3fc27587c2ec85d5fcfb956c1aea1",
+    "sha256": "233121bc44c6c098e81d8db18a07ba4525c3ce761cd5ab0508d8f935557dfa6c"
+  },
+  "wb_cc": {
+    "relative_path": "radiometric/wb_cc/profile_20261016_140344.json",
+    "source_sha256": "000cb137adfe9f89714e2d07ac646260d7ecd08c771c84fe120b2815abd1bccd",
+    "sha256": "8f66d1abd3d2ebccf77164f26596aa552baa443f625e70e9a05b6b4dcba25a1c"
+  },
+  "nd": {
+    "relative_path": "radiometric/nd/profile_20261016_135721.json",
+    "source_sha256": "cb2588837eddb0244a106a81e78d773adef73cdede76d214b7d5d088e5540d70",
+    "sha256": "3b400c0db645a6bb97b038333463d94eeb48c4829653cf18a6234828d867527d"
+  },
+  "mask": {
+    "relative_path": "photometric/mask/profile_20261017_211341.json",
+    "source_sha256": "fae3e8ea5582b266868c4e66dda9bcfdc1441cc65e73a4472edb46dbb635ea9b",
+    "sha256": "26795b346326daca9235d44cba4e4fd2ccbfbf4bbe4c12d6c45d2d66a21b725a"
+  },
+  "vignetting": {
+    "relative_path": "photometric/vignetting/profile_20261017_150930.json",
+    "source_sha256": "3c4f53ae3dfc99ce2ef18f22fa18e9c275e44d41b8114953dc0e8eb79128de4e",
+    "sha256": "69067f7df703adb34b19e4025382cd41d8525e3fdf58ec20be30d4192281f73a"
+  }
+}

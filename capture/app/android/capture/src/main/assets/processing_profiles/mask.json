@@ -1,0 +1,314 @@
+{
+  "schema": "penvmap calibration profile v1",
+  "category": "photometric/mask",
+  "profile_id": "profile_20261017_211341",
+  "scope": "global, fixed mechanical configuration",
+  "status": "Visually reviewed calibration masks; nominal-grid coverage checked; not installed as default",
+  "dataset_default": false,
+  "camera_serial": "20356250",
+  "image_size_wh": [
+    2448,
+    2048
+  ],
+  "coordinates": "Original unrotated RAW sensor grid; x right, y down; no distortion correction",
+  "encoding": "uint8 PNG, 255 usable, 0 excluded; no feathering",
+  "capture_session": "211341",
+  "capture_notes": "Mask captured with nodal rail settings: lateral 4.5 cm, depth 3.5 cm.",
+  "nodal_rail_cm": {
+    "lateral": 4.5,
+    "fore_aft": 3.5
+  },
+  "lens": {
+    "method": "Common radial image-circle edge from 3 last-exposure RAW 4x4 means; robust axis-aligned ellipse",
+    "center_xy_raw": [
+      1221.792601854688,
+      1051.3467338471726
+    ],
+    "edge_semi_axes_raw": [
+      1187.2200047555793,
+      1185.0737893791165
+    ],
+    "inset_raw_px": 16,
+    "usable_semi_axes_raw": [
+      1171.2200047555793,
+      1169.0737893791165
+    ],
+    "edge_samples": 820,
+    "median_abs_residual_raw_px": 1.4553498698854028,
+    "p95_abs_residual_raw_px": 6.718432801253438
+  },
+  "rig": {
+    "pitch_deg": -45,
+    "method": "Manually traced visible equipment silhouette, then dilated for edge blur and demosaicing support",
+    "polygon_xy_raw": [
+      [
+        0.5,
+        922.5
+      ],
+      [
+        200.5,
+        932.5
+      ],
+      [
+        224.5,
+        906.5
+      ],
+      [
+        280.5,
+        880.5
+      ],
+      [
+        330.5,
+        876.5
+      ],
+      [
+        374.5,
+        884.5
+      ],
+      [
+        422.5,
+        900.5
+      ],
+      [
+        440.5,
+        886.5
+      ],
+      [
+        494.5,
+        852.5
+      ],
+      [
+        552.5,
+        834.5
+      ],
+      [
+        556.5,
+        816.5
+      ],
+      [
+        572.5,
+        812.5
+      ],
+      [
+        614.5,
+        864.5
+      ],
+      [
+        612.5,
+        894.5
+      ],
+      [
+        594.5,
+        916.5
+      ],
+      [
+        570.5,
+        912.5
+      ],
+      [
+        532.5,
+        958.5
+      ],
+      [
+        506.5,
+        982.5
+      ],
+      [
+        518.5,
+        1036.5
+      ],
+      [
+        542.5,
+        1044.5
+      ],
+      [
+        558.5,
+        1058.5
+      ],
+      [
+        568.5,
+        1080.5
+      ],
+      [
+        560.5,
+        1100.5
+      ],
+      [
+        542.5,
+        1116.5
+      ],
+      [
+        510.5,
+        1118.5
+      ],
+      [
+        500.5,
+        1142.5
+      ],
+      [
+        484.5,
+        1180.5
+      ],
+      [
+        486.5,
+        1398.5
+      ],
+      [
+        526.5,
+        1420.5
+      ],
+      [
+        560.5,
+        1448.5
+      ],
+      [
+        574.5,
+        1480.5
+      ],
+      [
+        580.5,
+        1642.5
+      ],
+      [
+        580.5,
+        1676.5
+      ],
+      [
+        562.5,
+        1696.5
+      ],
+      [
+        606.5,
+        1730.5
+      ],
+      [
+        640.5,
+        1724.5
+      ],
+      [
+        666.5,
+        1738.5
+      ],
+      [
+        690.5,
+        1770.5
+      ],
+      [
+        704.5,
+        1812.5
+      ],
+      [
+        712.5,
+        1826.5
+      ],
+      [
+        898.5,
+        2048.5
+      ],
+      [
+        0.5,
+        2048.5
+      ]
+    ],
+    "margin_raw_px": 16,
+    "notes": "No additional equipment visible in 0/+45 frames. Room furniture/clothes intentionally remain scene content."
+  },
+  "mask_dir": "result\\profile_20261017_211341",
+  "masks": {
+    "-45": {
+      "file": "mask_-45.png",
+      "valid_pixels": 3567225,
+      "valid_sensor_percent": 71.1523317823223,
+      "sha256": "cc6a30e4ad51c1299279b3f9e46167ce75fed8d8396b79833cd5f4059a82169d"
+    },
+    "0": {
+      "file": "mask_0.png",
+      "valid_pixels": 4077294,
+      "valid_sensor_percent": 81.32623410692402,
+      "sha256": "adbdda3ea3a3cb018e692fdea1c96f1e16675c39c9282042bde2b0a582e221da"
+    },
+    "45": {
+      "file": "mask_45.png",
+      "valid_pixels": 4077294,
+      "valid_sensor_percent": 81.32623410692402,
+      "sha256": "adbdda3ea3a3cb018e692fdea1c96f1e16675c39c9282042bde2b0a582e221da"
+    }
+  },
+  "sources": [
+    {
+      "path": "0.npy",
+      "sha256": "6f8b4417643993694e0e3d662ca8c6a3d3a833dd40ceb8e584128be498859df8"
+    },
+    {
+      "path": "0.json",
+      "sha256": "74862e83e4f3fce5fa158487c5c1803ab70eef4cba9903b79cbb02dcc9a89707"
+    },
+    {
+      "path": "1.npy",
+      "sha256": "b9490499fbbeecfb5b73594537f2daee43470051f474cccb3e313704b9307f1b"
+    },
+    {
+      "path": "1.json",
+      "sha256": "c78f7aac113dc489c9d4d7f3543f7370966314afe97febd18277ed740482cdcf"
+    },
+    {
+      "path": "2.npy",
+      "sha256": "e4c9eddfcc4233642e702ebca35916cbdd8541dce11a3ca9935342a3618bc500"
+    },
+    {
+      "path": "2.json",
+      "sha256": "f5f3add38f582c44ca307abded314f2c422a0f9ea118fd5da1394abb99a2e784"
+    },
+    {
+      "path": "capture_meta.json",
+      "sha256": "862450dfd21ef8ec81ea367c4e539f52db1ecac22e3d831c9203a395dcf95632"
+    }
+  ],
+  "script": {
+    "path": "build_flir_masks.py",
+    "sha256": "770d7226ff7f35ae336efb8cf78ef3a1a29ad70f26b71483d85c99b6c9aa2b15"
+  },
+  "limitations": [
+    "Only one yaw was recorded for each pitch; cable/rig motion across yaw is not independently tested.",
+    "A sensor-space mask does not reject folded off-axis intrinsic projections; keep the intrinsic valid-domain check.",
+    "Occluded scene radiance is not recovered or inpainted. Any coverage gap is reported explicitly."
+  ],
+  "coverage": {
+    "grid": "Nominal 18-view capture priors: 6 yaw x 3 pitch, roll 90; not optimized scene poses",
+    "image_size_wh": [
+      2048,
+      1024
+    ],
+    "intrinsic": {
+      "path": "profile_20261017_193937.json",
+      "sha256": "69cc3dbfe2cb4ce72d3ac8337d21406b271765f5746aba47c556fc8264cb8312"
+    },
+    "lens_only": {
+      "uncovered_pixels": 0,
+      "uncovered_solid_angle_percent": 0.0,
+      "uncovered_elevation_min_max_deg": null,
+      "minimum_contributors": 2,
+      "maximum_contributors": 6
+    },
+    "with_rig": {
+      "uncovered_pixels": 73316,
+      "uncovered_solid_angle_percent": 0.3123522498031929,
+      "uncovered_elevation_min_max_deg": [
+        -89.82439024390243,
+        -82.44878048780487
+      ],
+      "minimum_contributors": 0,
+      "maximum_contributors": 6
+    },
+    "definition": "Conservative bilinear sampling: all contributing sensor-mask samples must be usable; solid angle uses ERP row integration."
+  },
+  "verification": {
+    "full_resolution_sensor_orientation": true,
+    "binary_masks_readback_exact": true,
+    "lens_mask_common_to_all_pitches": true,
+    "only_minus45_has_additional_rig_exclusion": true,
+    "lens_and_rig_overlays_visually_reviewed": true,
+    "capture_mask_loader_compatible": true,
+    "source_and_output_hashes_verified": true
+  }
+}

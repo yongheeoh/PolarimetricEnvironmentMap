@@ -1,0 +1,5 @@
+# Scientific source hashes must survive Windows checkouts.
+*.py text eol=lf
+# Bundled calibration files retain the exact bytes hashed from their source.
+capture/app/android/capture/src/main/assets/processing_profiles/*.json -text whitespace=cr-at-eol
+capture/app/android/capture/src/main/python/mobile/*manifest.json text eol=lf
