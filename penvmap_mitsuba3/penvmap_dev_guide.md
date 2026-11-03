@@ -17,6 +17,15 @@ The script downloads Mitsuba, registers the emitter, builds polarized RGB varian
 and writes the local runtime manifest. Sources/builds remain under `external/`.
 The Python version used for rendering must match the compiled runtime.
 
+### Measured pBRDFs (optional)
+
+If you render measured pBRDFs (`measured_polarized`) under `penvmap`, copy
+`patches/measured_polarized.cpp` over `external/mitsuba3/src/bsdfs/measured_polarized.cpp`
+before building. It interpolates the 16 Mueller matrix entries with one table
+lookup instead of one lookup per entry, so the kernel compiles faster (first
+render of a measured sphere on an RTX 3090: 4.2 s instead of 12.6 s); the values
+are the same up to float rounding.
+
 ## Render
 
 From the project root, in the rendering environment:

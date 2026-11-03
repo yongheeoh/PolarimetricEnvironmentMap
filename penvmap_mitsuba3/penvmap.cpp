@@ -4,6 +4,7 @@
 #include <mitsuba/core/fresolver.h>
 #include <mitsuba/core/plugin.h>
 #include <mitsuba/render/emitter.h>
+#include <mitsuba/render/mueller.h>
 #include <mitsuba/render/scene.h>
 #include <mitsuba/render/texture.h>
 #include <mitsuba/render/srgb.h>
@@ -422,7 +423,7 @@ public:
                 dr::scatter(m_data.array(), v01, row_index + boundary_offset);
             }
 
-            auto &&data = dr::migrate(m_data.array(), AllocType::Host);
+            auto &&data = dr::migrate(m_data.array(), JitBackend::None);
 
             if constexpr (dr::is_jit_v<Float>)
                 dr::sync_thread();
@@ -523,7 +524,7 @@ public:
         Point2f uv = Point2f(dr::atan2(v.x(), -v.z()) * dr::InvTwoPi<Float>,
                              dr::safe_acos(v.y()) * dr::InvPi<Float>);
 
-        return eval_spectrum(uv, si.wavelengths, active);
+        return to_world_basis(eval_spectrum(uv, si.wavelengths, active), v, -si.wi);
     }
 
     std::pair<Ray3f, Spectrum> sample_ray(Float time, Float wavelength_sample,
@@ -570,6 +571,7 @@ public:
 
         Float r2 = dr::square(m_bsphere.radius);
         Ray3f ray(origin, d_global, time, wavelengths);
+        weight = to_world_basis(weight, d, -d_global);
         weight *= dr::Pi<Float> * r2 / pdf;
 
         return std::make_pair(ray, weight & active);
@@ -597,6 +599,7 @@ public:
         Float inv_sin_theta = dr::safe_rsqrt(dr::maximum(
             dr::square(d.x()) + dr::square(d.z()), dr::square(dr::Epsilon<Float>)));
 
+        Vector3f v = d;
         d = m_to_world.value() * d;
 
         DirectionSample3f ds;
@@ -614,8 +617,9 @@ public:
         ds.d       = d;
         ds.dist    = dist;
 
+        // Keep the polarization, as in eval()
         auto weight =
-            depolarizer<Spectrum>(eval_spectrum(uv, it.wavelengths, active)) /
+            to_world_basis(eval_spectrum(uv, it.wavelengths, active), v, d) /
             ds.pdf;
 
         return { ds, weight & active };
@@ -643,7 +647,8 @@ public:
                             const DirectionSample3f &ds,
                             Mask active) const override {
         MI_MASKED_FUNCTION(ProfilerPhase::EndpointEvaluate, active);
-        return eval_spectrum(ds.uv, it.wavelengths, active);
+        Vector3f v = m_to_world.value().inverse() * ds.d;
+        return to_world_basis(eval_spectrum(ds.uv, it.wavelengths, active), v, ds.d);
     }
 
     std::pair<Wavelength, Spectrum>
@@ -777,6 +782,21 @@ protected:
             return result;
         } else {
             return eval_unpolarizedspectrum(uv, wavelengths, active, include_whitepoint);
+        }
+    }
+
+    /* The Stokes vector stored for the emitter-space direction v is expressed
+       in mueller::stokes_basis(-v). That basis turns with to_world, so re-express
+       the vector in Mitsuba's basis mueller::stokes_basis(-d) of the world-space
+       direction d = to_world * v. */
+    Spectrum to_world_basis(const Spectrum &value, const Vector3f &v, const Vector3f &d) const {
+        if constexpr (is_polarized_v<Spectrum>) {
+            Vector3f basis = m_to_world.value() * mueller::stokes_basis(-v);
+            return mueller::rotate_stokes_basis(-d, basis, mueller::stokes_basis(-d)) * value;
+        } else {
+            DRJIT_MARK_USED(v);
+            DRJIT_MARK_USED(d);
+            return value;
         }
     }
 
