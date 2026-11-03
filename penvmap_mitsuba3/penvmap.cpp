@@ -599,6 +599,7 @@ public:
         Float inv_sin_theta = dr::safe_rsqrt(dr::maximum(
             dr::square(d.x()) + dr::square(d.z()), dr::square(dr::Epsilon<Float>)));
 
+        Vector3f v = d;
         d = m_to_world.value() * d;
 
         DirectionSample3f ds;
@@ -616,8 +617,9 @@ public:
         ds.d       = d;
         ds.dist    = dist;
 
+        // Keep the polarization, as in eval()
         auto weight =
-            depolarizer<Spectrum>(eval_spectrum(uv, it.wavelengths, active)) /
+            to_world_basis(eval_spectrum(uv, it.wavelengths, active), v, d) /
             ds.pdf;
 
         return { ds, weight & active };
