@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Q&amp;A · penvmap</title>
-<meta name="description" content="Notes on the Linear Stokes captures and how to read polarization frames and named OpenEXR channels.">
+<meta name="description" content="Notes on reading named OpenEXR Stokes channels, polarization frames, and Linear Stokes captures.">
 <script src="../static/js/site-theme.js?v=f1b732e342"></script>
 <link rel="stylesheet" href="../static/css/site-theme.css?v=c6f871513d">
 <link rel="icon" href="../static/images/favicon.png"><link rel="stylesheet" href="atlas.css?v=03960ee672">
@@ -32,6 +32,19 @@
 </button></header>
 <main class="dataset-qa">
   <h1>Q&amp;A</h1>
+  <section aria-labelledby="openexr-channels">
+    <h2 id="openexr-channels">How do I read the Stokes channels in an OpenEXR file?</h2>
+    <p>Each OpenEXR file stores four RGB Stokes layers (<code>S0</code>–<code>S3</code>, 12 channels) plus standard <code>R</code>, <code>G</code>, and <code>B</code> channels that duplicate <code>S0</code> so regular RGB viewers display the intensity image (15 floating-point channels in total).</p>
+    <p>Channels follow the naming pattern <code>S<i>n</i>.<i>band</i></code> (for example, <code>S1.G</code> is the s1 component in the green band). To read the green-band Stokes vector, select <code>(S0.G, S1.G, S2.G, S3.G)</code>.</p>
+  </section>
+  <section aria-labelledby="polarization-frames">
+    <h2 id="polarization-frames">What is the difference between the θφ and Duff maps?</h2>
+    <p>Both maps store the same measured polarization at every pixel. Because a Stokes vector is defined relative to a local reference frame perpendicular to the light ray, the two formats differ only in how they choose that frame.</p>
+    <p><strong>θφ (thetaphi).</strong> Defines the tangent basis from the spherical coordinates (θ, φ) (<a href="https://vclab.kaist.ac.kr/siggraph2024/index.html">Yi et al., 2024</a>). This frame has singularities at the north and south poles, but varies smoothly elsewhere, so we use it for visualizing environment maps in the paper.</p>
+    <p><strong>Duff.</strong> Constructs an orthonormal basis directly from the ray direction (<a href="https://jcgt.org/published/0006/01/01/">Duff et al., 2017</a>). It introduces discontinuities along the seam where the sign branch switches, but matches Mitsuba 3’s default polarization frame, so we distribute this format for direct use with our <code>penvmap</code> rendering plugin.</p>
+    <p>You can convert between θφ, Duff, or any other frame convention by rotating the local basis around each ray with a rotation Mueller matrix. Rotating the frame by an angle ϑ rotates (s1, s2) by 2ϑ, while intensity (s0) and circular polarization (s3) remain unchanged.</p>
+    <p><strong>S2L2.</strong> On <a href="https://huggingface.co/datasets/yongheeoh/penvmap">Hugging Face</a>, we also distribute the frame-free S2L2 representation (<a href="https://vclab.kaist.ac.kr/siggraphasia2025p2/">Yi et al., 2025</a>), which encodes linear polarization orientation without choosing a local frame. Each ray can be converted between S2L2 and either the θφ or Duff Stokes frames.</p>
+  </section>
   <section aria-labelledby="linear-stokes-captures">
     <h2 id="linear-stokes-captures">Why did we add Linear Stokes maps?</h2>
     <p>We added Linear Stokes maps to provide more accurate outdoor color reproduction. As noted in the paper and supplementary material, our Full Stokes camera picks up near-infrared (NIR) light in the red channel. Adding an NIR-cut filter improved color fidelity near the image center, but it also altered the polarization measurements, so we captured the Full Stokes maps without one.</p>
@@ -141,19 +154,6 @@
         <figcaption><strong>Linear Stokes</strong>[R, G, B] × [s0, s1, s2] · 9 channels<br>Linear polarization only (no s3), with more accurate outdoor color.</figcaption>
       </figure>
     </div>
-  </section>
-  <section aria-labelledby="polarization-frames">
-    <h2 id="polarization-frames">What is the difference between the θφ and Duff maps?</h2>
-    <p>Both maps store the same measured polarization at every pixel. Because a Stokes vector is defined relative to a local reference frame perpendicular to the light ray, the two formats differ only in how they choose that frame.</p>
-    <p><strong>θφ (thetaphi).</strong> Defines the tangent basis from the spherical coordinates (θ, φ) (<a href="https://vclab.kaist.ac.kr/siggraph2024/index.html">Yi et al., 2024</a>). This frame has singularities at the north and south poles, but varies smoothly elsewhere, so we use it for visualizing environment maps in the paper.</p>
-    <p><strong>Duff.</strong> Constructs an orthonormal basis directly from the ray direction (<a href="https://jcgt.org/published/0006/01/01/">Duff et al., 2017</a>). It introduces discontinuities along the seam where the sign branch switches, but matches Mitsuba 3’s default polarization frame, so we distribute this format for direct use with our <code>penvmap</code> rendering plugin.</p>
-    <p>You can convert between θφ, Duff, or any other frame convention by rotating the local basis around each ray with a rotation Mueller matrix. Rotating the frame by an angle ϑ rotates (s1, s2) by 2ϑ, while intensity (s0) and circular polarization (s3) remain unchanged.</p>
-    <p><strong>S2L2.</strong> On <a href="https://huggingface.co/datasets/yongheeoh/penvmap">Hugging Face</a>, we also distribute the frame-free S2L2 representation (<a href="https://vclab.kaist.ac.kr/siggraphasia2025p2/">Yi et al., 2025</a>), which encodes linear polarization orientation without choosing a local frame. Each ray can be converted between S2L2 and either the θφ or Duff Stokes frames.</p>
-  </section>
-  <section aria-labelledby="openexr-channels">
-    <h2 id="openexr-channels">How do I read the Stokes channels in an OpenEXR file?</h2>
-    <p>Each OpenEXR file stores four RGB Stokes layers (<code>S0</code>–<code>S3</code>, 12 channels) plus standard <code>R</code>, <code>G</code>, and <code>B</code> channels that duplicate <code>S0</code> so regular RGB viewers display the intensity image (15 floating-point channels in total).</p>
-    <p>Channels follow the naming pattern <code>S<i>n</i>.<i>band</i></code> (for example, <code>S1.G</code> is the s1 component in the green band). To read the green-band Stokes vector, select <code>(S0.G, S1.G, S2.G, S3.G)</code>.</p>
   </section>
 </main>
 </body></html>
