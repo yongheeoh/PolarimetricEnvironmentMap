@@ -25,7 +25,7 @@
   <!-- Before/after comparison slider -->
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"/>
-  <link rel="stylesheet" href="./static/css/index.css?v=2620dbd99498">
+  <link rel="stylesheet" href="./static/css/index.css?v=216544db9b6d">
   <script src="./static/js/site-theme.js?v=f1b732e342"></script>
   <link rel="stylesheet" href="./static/css/site-theme.css?v=c6f871513d">
   <link rel="icon" type="image/png" href="./static/images/favicon.png">
@@ -37,6 +37,7 @@
   <script src="./static/js/index.js?v=6da02486cffc"></script>
   <script defer src="./static/js/render-comparison.js?v=ab33ef71625b"></script>
   <script defer src="./static/js/copy-citation.js?v=bc8ee8589ae6"></script>
+  <script defer src="./static/js/stitching-videos.js?v=75218d02f7c5"></script>
 </head>
 <body class="project-page">
 
@@ -172,6 +173,33 @@
             and evaluation of polarization-based scene reconstruction and understanding under
             in-the-wild illumination.
           </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Polarization-aware stitching -->
+    <div id="stitching" class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Polarization-aware panorama stitching</h2>
+        <div class="stitching-example">
+          <h3 class="title is-5">Camera and environment frames</h3>
+          <video class="stitching-video" autoplay muted loop playsinline controls
+                 preload="none" data-src="./static/videos/camera-environment-frames.mp4"
+                 poster="./static/images/camera-environment-frames-poster.jpg"
+                 width="1920" height="1080" aria-label="Camera and environment frames">
+            <a href="./static/videos/camera-environment-frames.mp4">Play camera and environment frames.</a>
+          </video>
+          <noscript><a href="./static/videos/camera-environment-frames.mp4">Play camera and environment frames</a></noscript>
+        </div>
+        <div class="stitching-example">
+          <h3 class="title is-5">Polarization frame alignment</h3>
+          <video class="stitching-video" autoplay muted loop playsinline controls
+                 preload="none" data-src="./static/videos/polarization-frame-alignment.mp4"
+                 poster="./static/images/polarization-frame-alignment-poster.jpg"
+                 width="1920" height="1080" aria-label="Polarization frame alignment">
+            <a href="./static/videos/polarization-frame-alignment.mp4">Play polarization frame alignment.</a>
+          </video>
+          <noscript><a href="./static/videos/polarization-frame-alignment.mp4">Play polarization frame alignment</a></noscript>
         </div>
       </div>
     </div>

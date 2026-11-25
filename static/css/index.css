@@ -389,3 +389,14 @@ body {
 .project-page button[aria-pressed="true"] { background: var(--selected) }
 .project-page .render-error { color: light-dark(#a1251b, #ffaaa0) }
 :root[data-theme="light"] .project-page .brand-icon-github { filter: none }
+
+#stitching { margin-top: 3rem; margin-bottom: 3rem; }
+.stitching-example + .stitching-example { margin-top: 2rem; }
+.stitching-example .title { color: inherit; margin-bottom: 1rem; }
+.stitching-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
