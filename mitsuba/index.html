@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mitsuba Renderer · penvmap</title>
+<meta name="description" content="Render polarized scenes in Mitsuba 3 with our measured polarimetric environment maps and custom penvmap emitter.">
+<script src="../static/js/site-theme.js"></script>
+<link rel="stylesheet" href="../static/css/site-theme.css?v=c6f871513d">
+<link rel="icon" href="../static/images/favicon.png"><link rel="stylesheet" href="../renderer/renderer.css"><link rel="stylesheet" href="mitsuba.css">
+</head>
+<body>
+<header class="site-header"><a class="brand" href="../">penvmap</a>
+<nav aria-label="Site"><a href="../browser/">Dataset</a><a class="current" href="./" aria-current="page">Mitsuba Renderer</a><a href="../renderer/">Web Renderer</a><a href="../browser/qa.html">Q&amp;A</a></nav>
+<button id="themeToggle" type="button">
+  <svg class="to-light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+  <svg class="to-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A9 9 0 0 1 9.7 3.5a9 9 0 1 0 10.8 10.8Z"/></svg>
+  <span class="to-light sr-only">Switch to light mode</span>
+  <span class="to-dark sr-only">Switch to dark mode</span>
+</button></header>
+<main>
+  <h1>Polarization rendering in Mitsuba 3</h1>
+  <p class="lead">Render scenes with our measured polarimetric environment maps in Mitsuba 3 using the custom <code>penvmap</code> emitter.</p>
+  <div class="render-results">
+    <figure><img src="intensity.jpg" width="640" height="640" alt="Color rendering of the gold sphere under outdoor illumination."><figcaption>s0</figcaption></figure>
+    <figure><img src="aolp.jpg?v=luma1" width="640" height="640" alt="Angle of linear polarization of the rendered scene, shown as hue."><figcaption>AoLP (Angle of linear polarization)</figcaption></figure>
+    <figure><img src="dolp.png?v=luma1" width="640" height="640" alt="Degree of linear polarization, from black at zero to red at one."><figcaption>DoLP (Degree of linear polarization)</figcaption></figure>
+  </div>
+  <section id="penvmap" class="plugin-reference">
+    <h2>Polarized environment emitter (<code>penvmap</code>)</h2>
+    <p>This emitter illuminates a scene from a Duff-basis RGB Stokes environment map. Pair it with a polarized RGB variant and a <code>stokes</code> integrator to record polarization at the camera.</p>
+    <table>
+      <thead><tr><th scope="col">Parameter</th><th scope="col">Type</th><th scope="col">Description</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><code>filename</code></th><td>string</td><td>Latitude–longitude EXR with four RGB layers (<code>S0</code>, <code>S1</code>, <code>S2</code>, and <code>S3</code>), such as those in <code>penvmap/duff/</code>.</td></tr>
+        <tr><th scope="row"><code>bitmap</code></th><td>Bitmap</td><td>Loaded <code>mi.Bitmap</code> passed from Python (used in place of <code>filename</code>).</td></tr>
+        <tr><th scope="row"><code>scale</code></th><td>float</td><td>Scalar multiplier applied to all four Stokes components. Defaults to <code>1</code>.</td></tr>
+        <tr><th scope="row"><code>to_world</code></th><td>transform</td><td>World-space orientation transform for the environment. Defaults to the identity.</td></tr>
+        <tr><th scope="row"><code>mis_compensation</code></th><td>boolean</td><td>Multiple importance sampling (MIS) compensation for the emitter’s sampling distribution. Defaults to <code>false</code>.</td></tr>
+      </tbody>
+    </table>
+    <p>To supply separate RGB images for each Stokes component, use <code>filename_s0</code>–<code>filename_s3</code> or <code>bitmap_s0</code>–<code>bitmap_s3</code>.</p>
+    <h3>Use the emitter in a scene</h3>
+    <p>Both examples load <code>linear-002-duff.exr</code> from the working directory (or beside the XML file) and rotate the environment 30° around the world Y axis. For setup and rendering instructions, see the <a href="https://github.com/yongheeoh/PolarimetricEnvironemtMap#readme">project README on GitHub</a>.</p>
+    <fieldset class="scene-format">
+      <legend class="sr-only">Scene example format</legend>
+      <input type="radio" name="format" id="format-python" checked><label for="format-python">Python dict</label>
+      <input type="radio" name="format" id="format-xml"><label for="format-xml">XML</label>
+      <pre class="python-example"><code>import mitsuba as mi
+
+mi.set_variant("llvm_ad_rgb_polarized")
+scene = mi.load_dict({
+    "type": "scene",
+    "emitter": {
+        "type": "penvmap",
+        "filename": "linear-002-duff.exr",
+        "scale": 1.0,
+        "to_world": mi.ScalarTransform4f().rotate([0, 1, 0], 30),
+    },
+})</code></pre>
+      <pre class="xml-example"><code>&lt;scene version="3.0.0"&gt;
+    &lt;emitter type="penvmap"&gt;
+        &lt;string name="filename" value="linear-002-duff.exr"/&gt;
+        &lt;float name="scale" value="1.0"/&gt;
+        &lt;transform name="to_world"&gt;
+            &lt;rotate y="1" angle="30"/&gt;
+        &lt;/transform&gt;
+    &lt;/emitter&gt;
+&lt;/scene&gt;</code></pre>
+    </fieldset>
+  </section>
+</main>
+</body></html>

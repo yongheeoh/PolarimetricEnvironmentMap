@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Web Renderer · penvmap</title>
+<meta name="description" content="Try polarized environment lighting in your browser with Plenoview using our measured polarimetric environment maps.">
+<script src="../static/js/site-theme.js"></script>
+<link rel="stylesheet" href="../static/css/site-theme.css?v=c6f871513d">
+<link rel="icon" href="../static/images/favicon.png"><link rel="stylesheet" href="renderer.css">
+</head>
+<body>
+<header class="site-header"><a class="brand" href="../">penvmap</a>
+<nav aria-label="Site"><a href="../browser/">Dataset</a><a href="../mitsuba/">Mitsuba Renderer</a><a class="current" href="./" aria-current="page">Web Renderer</a><a href="../browser/qa.html">Q&amp;A</a></nav>
+<button id="themeToggle" type="button">
+  <svg class="to-light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+  <svg class="to-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A9 9 0 0 1 9.7 3.5a9 9 0 1 0 10.8 10.8Z"/></svg>
+  <span class="to-light sr-only">Switch to light mode</span>
+  <span class="to-dark sr-only">Switch to dark mode</span>
+</button></header>
+<main>
+  <h1>Polarization rendering in Plenoview</h1>
+  <p class="lead">Try polarized environment lighting directly in your browser with Plenoview.</p>
+  <figure>
+    <img src="linear-002-render.jpg?v=3a3ec304e2" width="1280" height="760" alt="Plenoview rendering test spheres lit by a polarimetric environment map, showing the AoLP visualization.">
+  </figure>
+  <section>
+    <h2>Render a scene</h2>
+    <ol class="steps">
+      <li><div class="step">
+        <div><h3>Open the viewer</h3>
+        <p>Open any scene in the <a href="../browser/">Dataset</a>, click <strong>Open Interactive Viewer</strong>, and wait for the Duff-basis EXR to load in a new tab. (On a small screen, tap <strong>Scene info</strong> first.)</p></div>
+        <img src="open-viewer.png" width="254" height="160" alt="Scene actions with Open Interactive Viewer highlighted below Open on Hugging Face." loading="lazy">
+      </div></li>
+      <li><div class="step">
+        <div><h3>Turn on environment lighting</h3>
+        <p>Open <strong>View → Panorama viewer</strong> and click <strong>Environment lighting (path tracing)</strong> to place the test spheres under the environment map.</p></div>
+        <img src="lighting-menu.png" width="425" height="128" alt="The View menu and Panorama viewer submenu, with Environment lighting (path tracing) highlighted." loading="lazy">
+      </div></li>
+      <li><div class="step">
+        <div><h3>Switch polarization channels</h3>
+        <p>In the strip below the viewport, click <strong>AoLP.RGB</strong> for a view like the example above, or switch to <strong>DoLP.RGB</strong> and <strong>S0.RGB</strong> for polarization strength and intensity.</p></div>
+        <img src="polarization-channel.png" width="268" height="118" alt="The AoLP.RGB thumbnail highlighted in the channel strip." loading="lazy">
+      </div></li>
+      <li><div class="step">
+        <div><h3>Adjust the material (optional)</h3>
+        <p>If you want to test other surfaces, scroll to <strong>View</strong> in the right sidebar to change <strong>Material</strong> or <strong>Roughness</strong>, then let the preview refine.</p></div>
+        <img src="material-controls.png" width="280" height="79" alt="Material selector and Roughness field highlighted in the View panel." loading="lazy">
+      </div></li>
+    </ol>
+  </section>
+</main>
+</body></html>

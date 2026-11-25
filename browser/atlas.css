@@ -1,0 +1,136 @@
+* { box-sizing: border-box }
+body { margin: 0 }
+a { color: inherit; text-underline-offset: 3px }
+button, input, select { font: inherit; color: inherit; border-radius: 0 }
+button, select { cursor: pointer }
+button { background: transparent; border: 0 }
+.layout { display: grid; grid-template-columns: 205px minmax(0,1fr); min-height: calc(100vh - 56px) }
+aside { padding: 26px 12px; background: light-dark(#edf2f6, #222426); border-right: 1px solid var(--line) }
+aside h2 { font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); margin: 30px 10px 10px }
+aside > h2:first-child { margin-top: 8px }
+aside button { display: flex; width: 100%; align-items: center; justify-content: space-between; padding: 8px 10px; font-size: 14px; text-align: left }
+aside button span { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums }
+aside button:hover { background: light-dark(#e1ebf3, #2c3843) }
+aside button[aria-pressed=true] { background: var(--selected); color: light-dark(#151819, white); box-shadow: inset 2px 0 light-dark(#477599, #a9cde8) }
+.repo { display: block; margin: 32px 10px; font-size: 13px; color: var(--muted) }
+main { padding: clamp(20px,3vw,48px); max-width: 1900px; width: 100% }
+.actions { display: flex; gap: 10px; align-items: center }
+#reset { border: 1px solid light-dark(#a4a9a7, #484b4d); background: light-dark(#ffffff, #26282a); padding: 8px 12px; font-size: 14px }
+#count, .credit { color: var(--muted); font-size: 13px }
+aside .polarization-heading { display: flex; align-items: center; gap: 3px }
+.capture-help { display: inline-grid; place-items: center; width: 24px; height: 24px; margin-block: -4px; text-decoration: none }
+.capture-help span { display: grid; place-items: center; width: 12px; height: 12px; border: 1px solid currentColor; border-radius: 50%; font: 600 9px/1 system-ui; letter-spacing: normal }
+.capture-help:hover span, .capture-help:focus-visible span { background: var(--selected) }
+#cards { display: grid; grid-template-columns: repeat(auto-fill,minmax(min(240px,100%),1fr)); gap: 16px 12px }
+.card { text-decoration: none; text-align: left; padding: 0 0 12px; background: light-dark(#ffffff, #27292b); min-width: 0 }
+.card:hover { background: light-dark(#e4eef6, #303e4a) }
+.card img { display: block; width: 100%; aspect-ratio: 2/1; object-fit: contain; background: light-dark(#dde5eb, #313436) }
+.card strong,.card span { display: block; padding: 0 12px }
+.card strong { font-size: 17px; font-weight: 620; margin-top: 10px }
+.card span { font-size: 13px; color: var(--muted); margin-top: 2px }
+:focus-visible { outline: 2px solid light-dark(#265e88, #c1e3ff); outline-offset: 2px }
+.scene-page { --gutter: clamp(14px, 2vw, 32px); max-width: none; padding: 16px 0 40px }
+.scene-page h1 { margin: 6px var(--gutter) 12px; font-size: clamp(24px, 2.2vw, 34px); font-weight: 620; line-height: 1.15; letter-spacing: -.035em }
+.scene-layout { display: grid; grid-template-columns: minmax(0, 1fr) clamp(252px, 20vw, 330px); grid-template-areas: "preview info" "strip info"; column-gap: 0; align-items: start; position: relative }
+.scene-layout[hidden] { display: none }
+.scene-layout > section { min-width: 0 }
+.stage { grid-area: preview }
+.stage > #flat { display: block; width: 100%; height: auto; aspect-ratio: 2/1; object-fit: contain }
+.filmstrip { grid-area: strip; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(95px, 100%), 1fr)); gap: 8px; margin-left: var(--gutter); overflow-x: auto; padding: 3px; margin-top: 8px }
+.filmstrip button { display: flex; flex-direction: column; min-width: 0; padding: 0; text-align: left; color: var(--muted); border-bottom: 2px solid transparent }
+.filmstrip img { width: 100%; height: auto; display: block; aspect-ratio: 2/1 }
+.filmstrip span { white-space: nowrap; font-size: 13px; padding: 5px 2px }
+.filmstrip button:hover, .filmstrip button[aria-pressed=true] { color: inherit; background: var(--selected) }
+.filmstrip button[aria-pressed=true] { border-bottom-color: currentColor }
+.details { grid-area: info; margin-right: var(--gutter); border-left: 1px solid var(--line); padding-left: clamp(16px, 1.5vw, 25px) }
+.details dl { margin: 18px 0 }
+.details dl > div { padding: 8px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 84px 1fr; gap: 6px; font-size: 14px }
+.details dt { color: var(--muted) }
+.details dd { margin: 0 }
+.actions { flex-direction: column; align-items: stretch; gap: 8px; font-size: 14px }
+.actions a { text-align: center; padding: 10px; text-decoration: none; border: 1px solid var(--line) }
+.actions a:hover { text-decoration: underline }
+#download { display: flex; align-items: center; justify-content: center; gap: 8px }
+#download svg { flex: none }
+.primary { background: light-dark(#355f80, #cbe4f7); color: light-dark(#ffffff, #142432); font-weight: 650 }
+.scene-heading { display: flex; align-items: center; justify-content: space-between }
+#detailsToggle { display: none; margin-right: var(--gutter); padding: 6px 10px; border: 1px solid var(--line); flex-shrink: 0 }
+@media (max-width: 672px) {
+  #detailsToggle:not([hidden]) { display: block }
+  .scene-layout { grid-template-columns: minmax(0, 1fr); grid-template-areas: "preview" "strip" }
+  .details { display: none }
+  .scene-page:has(#detailsToggle[aria-expanded="true"]) .details {
+    display: block; grid-area: auto; position: absolute; top: 0; right: 0; z-index: 1;
+    width: min(354px, calc(100% - 32px)); margin: 0; padding: 16px;
+    background: light-dark(#ffffff, #222426); border: 1px solid var(--line);
+  }
+  .filmstrip { gap: 5px; margin-right: var(--gutter) }
+}
+@media (orientation: landscape) {
+  .filmstrip { min-width: 0; grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(95px, 1fr) }
+}
+@media (width > 760px) {
+  .dataset-page { display: grid; grid-template-rows: auto minmax(0, 1fr); height: 100vh; height: 100dvh }
+  .dataset-page .layout { min-height: 0; grid-template-rows: minmax(0, 1fr) }
+  .dataset-page .layout > aside, .dataset-page .layout > main { overflow-y: auto; overscroll-behavior-y: contain }
+}
+@media(max-width:760px) {
+  .layout { display: block }
+  aside { padding: 10px 14px; border-bottom: 1px solid var(--line); border-right: 0 }
+  aside h2,.repo { display: none }
+  aside .polarization-heading { margin: 10px 5px 5px }
+  aside div { display: flex; flex-wrap: wrap; gap: 4px }
+  aside button { width: auto; gap: 6px; padding: 5px 8px; font-size: 13px }
+  main { padding: 20px 14px }
+  #cards { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px }
+  .card strong { font-size: 15px }
+}
+
+.preview { position: relative }
+.preview img + img { position: absolute; inset: 0; opacity: 0; transition: opacity 180ms ease-out }
+@media (hover: hover) {
+  .card:hover .preview img + img.ready { opacity: 1 }
+}
+.card:focus-visible .preview img + img.ready { opacity: 1 }
+@media (prefers-reduced-motion: reduce) {
+  .preview img + img { transition: none }
+}
+
+#subcategories { margin: 3px 0 8px 12px; padding-left: 7px; border-left: 1px solid var(--line) }
+#subcategories button { font-size: 13px; padding: 4px 9px }
+@media (max-width: 760px) {
+  #subcategories { flex-basis: 100%; order: 1 }
+}
+
+.repo:hover { text-decoration: underline }
+
+
+.legend-slot { display: flex; align-items: center; gap: 8px; height: 42px; padding: 3px 12px; font-size: 12px; line-height: 16px; font-variant-numeric: tabular-nums }
+.channel-legend { width: min(100%, 318px); margin: 0 }
+.legend-field { display: flex; gap: 6px; align-items: center; height: 20px }
+.stage .legend-field img { display: block; width: calc(100% - 64px); height: 6px; aspect-ratio: auto; object-fit: fill }
+#legendTicks { display: flex; justify-content: space-between; width: calc(100% - 64px) }
+
+.stage > #flat[hidden], #panorama[hidden] { display: none }
+#panorama { width: 100%; aspect-ratio: 2/1; height: auto }
+#viewMode { display: flex; margin-left: auto; border: 1px solid var(--line); flex-shrink: 0 }
+#viewMode button { padding: 5px 10px; color: var(--muted); line-height: 16px }
+#viewMode button[aria-pressed="true"] { background: var(--selected); color: inherit; font-weight: 650 }
+#panoramaStatus { margin: 4px var(--gutter); color: var(--muted); font-size: 13px }
+
+#fullscreenToggle { display: grid; place-items: center; flex: none; padding: 5px; border: 1px solid var(--line) }
+#sceneContent.expanded {
+  position: fixed; inset: 0; z-index: 1000; width: 100%; height: 100%; background: light-dark(#f4f7fa, #1b1d1f);
+  grid-template: "preview" minmax(0,1fr) "strip" auto / minmax(0,1fr); align-items: stretch;
+}
+#sceneContent.expanded .details { display: none }
+.expanded .stage { display: flex; flex-direction: column; min-height: 0 }
+.expanded .stage > #flat, .expanded #panorama { flex: 1; min-height: 0; height: 0; aspect-ratio: auto }
+.expanded .filmstrip { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 95px; margin: 0; padding: 4px 8px }
+body:has(#sceneContent.expanded) { overflow: hidden }
+
+#similarMaps { margin: 32px var(--gutter) 0; padding-top: 18px; border-top: 1px solid var(--line) }
+#similarHeading { margin: 0 0 14px; font-size: clamp(19px, 2vw, 24px); letter-spacing: -.025em }
+.similar-grid { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 12px }
+@media (max-width: 1100px) { .similar-grid { grid-template-columns: repeat(3,minmax(0,1fr)) } }
+@media (max-width: 600px) { .similar-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px } }

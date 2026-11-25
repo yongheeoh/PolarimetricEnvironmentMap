@@ -1,0 +1,19 @@
+* { box-sizing: border-box }
+body, figure { margin: 0 }
+main { max-width: 1328px; margin: auto; padding: clamp(14px, 2vw, 28px) }
+h1 { margin: 0 0 8px; font-size: clamp(24px, 3vw, 38px); line-height: 1.15; letter-spacing: -.035em }
+.lead { margin: 0 0 18px; color: var(--muted); line-height: 1.5 }
+figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line) }
+section { max-width: 1000px; margin: 32px auto 56px }
+h2 { font-size: 23px; margin: 0 0 16px }
+.steps { padding-left: 1.8rem; margin: 0 }
+.steps li { padding: 16px 0 18px .25rem; border-top: 1px solid var(--line) }
+.steps li::marker { font-weight: 650 }
+.steps h3 { font-size: 17px; margin: 0 0 6px }
+.steps p { margin: 0; line-height: 1.55 }
+.steps img { display: block; max-width: 100%; height: auto; margin-top: 12px; border: 1px solid var(--line) }
+@media (min-width: 760px) {
+  .step { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 44%); gap: 28px; align-items: start }
+  .steps img { margin: 0; justify-self: start }
+}
+a { color: inherit; text-underline-offset: 3px }

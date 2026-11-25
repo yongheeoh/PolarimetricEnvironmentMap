@@ -1,0 +1,53 @@
+:root {
+  color-scheme: dark;
+  font: 16px/1.45 system-ui, sans-serif;
+  color: light-dark(#202324, #eeeeeb);
+  background: light-dark(#f4f7fa, #1b1d1f);
+  --muted: light-dark(#53585b, #b1b4b6);
+  --line: light-dark(#c9ccce, #383b3e);
+  --selected: light-dark(#dcebf7, #304354);
+}
+.site-header {
+  display: flex; align-items: stretch; gap: 20px;
+  background: light-dark(#ffffff, #141516); border-bottom: 1px solid var(--line); padding: 0 24px;
+}
+.site-header .brand, .site-header nav { display: flex; align-items: center }
+.site-header .brand { gap: 12px; text-decoration: none; font-weight: 720; font-size: 22px; letter-spacing: -.05em }
+.site-header nav { gap: inherit }
+.site-header nav a { padding: 17px 0; font-size: 14px; text-decoration: none; color: var(--muted) }
+.site-header nav .current { color: light-dark(#151819, white); box-shadow: inset 0 -2px light-dark(#477599, #a9cde8) }
+.site-header nav a:hover { color: light-dark(#151819, white); text-decoration: underline }
+:root[data-theme="light"] { color-scheme: light }
+#themeToggle {
+  margin-left: auto;
+  align-self: center;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  color: var(--muted);
+}
+#themeToggle:hover { color: inherit; background: var(--selected) }
+.to-dark, :root[data-theme="light"] .to-light { display: none }
+:root[data-theme="light"] .to-dark { display: inline }
+
+#themeToggle svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
+
+.site-header { font: 16px/1.45 system-ui, sans-serif; color: inherit }
+.site-header .brand { color: inherit }
+.site-header .brand[aria-current="page"] { box-shadow: inset 0 -2px light-dark(#477599, #a9cde8) }
+#themeToggle { background: transparent; border: 0; cursor: pointer }
+.site-header :focus-visible { outline: 2px solid light-dark(#265e88, #c1e3ff); outline-offset: -2px }
+@media (max-width: 760px) {
+  .site-header { padding: 0 14px; flex-wrap: wrap }
+  .site-header nav a { font-size: 13px; padding: 12px 0 }
+}
+@media (max-width: 520px) {
+  .site-header { display: grid; grid-template-columns: 1fr auto; gap: 0 20px; align-items: center }
+  .site-header .brand { justify-self: start }
+  .site-header nav { grid-row: 2; grid-column: 1 / -1; gap: 20px }
+  .site-header nav a { padding: 8px 0 }
+  #themeToggle { grid-row: 1; grid-column: 2 }
+}

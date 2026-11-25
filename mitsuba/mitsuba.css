@@ -1,0 +1,27 @@
+.render-results { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px }
+.render-results figcaption { font-size: 14px; margin-top: 6px; color: var(--muted) }
+.steps pre { margin: 12px 0; padding: 12px 16px; background: var(--selected); overflow-x: auto; white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.55 }
+.steps details { margin-top: 14px }
+.steps details p { margin-top: 10px }
+.steps summary { cursor: pointer; font-weight: 600 }
+@media(max-width:600px) {
+  .render-results { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px 8px }
+  .render-results figure:first-child { grid-column: 1 / -1 }
+  .render-results figcaption { font-size: 12px }
+}
+
+.steps code { overflow-wrap: anywhere }
+
+.plugin-reference p { line-height: 1.55 }
+.plugin-reference h3 { margin: 24px 0 6px; font-size: 17px }
+.plugin-reference table { width: 100%; border-collapse: collapse; font-size: 14px; text-align: left }
+.plugin-reference th, .plugin-reference td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: anywhere }
+.plugin-reference thead { background: var(--selected) }
+.plugin-reference tbody th { font-weight: 500 }
+.scene-format { min-width: 0; margin: 0; border: 0; padding: 0 }
+.scene-format input { position: absolute; opacity: 0; width: 1px; height: 1px }
+.scene-format label { display: inline-block; padding: 7px 12px; color: var(--muted); cursor: pointer }
+.scene-format input:focus-visible + label { outline: 2px solid currentColor; outline-offset: -2px }
+.scene-format input:checked + label { box-shadow: inset 0 -2px currentColor; color: inherit; font-weight: 600 }
+.scene-format pre { display: none; overflow-x: auto; margin: 0; padding: 16px; background: var(--selected); line-height: 1.55 }
+#format-python:checked ~ .python-example, #format-xml:checked ~ .xml-example { display: block }

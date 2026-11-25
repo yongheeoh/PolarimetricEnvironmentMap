@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="description"
@@ -20,42 +20,34 @@
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <!-- Before/after comparison slider -->
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"/>
   <link rel="stylesheet" href="./static/css/index.css?v=2620dbd99498">
+  <script src="./static/js/site-theme.js"></script>
+  <link rel="stylesheet" href="./static/css/site-theme.css?v=c6f871513d">
   <link rel="icon" type="image/png" href="./static/images/favicon.png">
   <link rel="apple-touch-icon" href="./static/images/apple-touch-icon.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
   <script src="./static/js/index.js?v=6da02486cffc"></script>
   <script defer src="./static/js/render-comparison.js?v=ab33ef71625b"></script>
   <script defer src="./static/js/copy-citation.js?v=bc8ee8589ae6"></script>
 </head>
-<body>
+<body class="project-page">
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://yongheeoh.github.io/" rel="noopener" target="_blank">
-        <span class="icon"><i class="fas fa-home"></i></span>
-      </a>
-    </div>
-  </div>
-</nav>
+<header class="site-header"><a class="brand" href="./" aria-current="page">penvmap</a>
+<nav aria-label="Site"><a href="./browser/">Dataset</a><a href="./mitsuba/">Mitsuba Renderer</a><a href="./renderer/">Web Renderer</a><a href="browser/qa.html">Q&amp;A</a></nav>
+<button id="themeToggle" type="button">
+  <svg class="to-light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+  <svg class="to-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A9 9 0 0 1 9.7 3.5a9 9 0 1 0 10.8 10.8Z"/></svg>
+  <span class="to-light sr-only">Switch to light mode</span>
+  <span class="to-dark sr-only">Switch to dark mode</span>
+</button></header>
 
 
 <section class="hero">
@@ -85,24 +77,18 @@
           </div>
 
           <div class="column has-text-centered">
+            <!-- Icons: Font Awesome Free 5.15.1 by Fonticons, Inc., CC BY 4.0 (https://fontawesome.com/license/free). -->
             <div class="publication-links">
               <span class="link-block">
-                <a href="./"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <a href="https://arxiv.org/abs/2611.21334"
+                   class="external-link button is-normal is-rounded is-dark" rel="noopener" target="_blank">
+                  <span class="icon"><svg aria-hidden="true" width="0.75em" height="1em" viewBox="0 0 384 512" fill="currentColor"><path d="M369.9 97.9L286 14C277 5 264.8-.1 252.1-.1H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V131.9c0-12.7-5.1-25-14.1-34zM332.1 128H256V51.9l76.1 76.1zM48 464V48h160v104c0 13.3 10.7 24 24 24h104v288H48zm250.2-143.7c-12.2-12-47-8.7-64.4-6.5-17.2-10.5-28.7-25-36.8-46.3 3.9-16.1 10.1-40.6 5.4-56-4.2-26.2-37.8-23.6-42.6-5.9-4.4 16.1-.4 38.5 7 67.1-10 23.9-24.9 56-35.4 74.4-20 10.3-47 26.2-51 46.2-3.3 15.8 26 55.2 76.1-31.2 22.4-7.4 46.8-16.5 68.4-20.1 18.9 10.2 41 17 55.8 17 25.5 0 28-28.2 17.5-38.7zm-198.1 77.8c5.1-13.7 24.5-29.5 30.4-35-19 30.3-30.4 35.7-30.4 35zm81.6-190.6c7.4 0 6.7 32.1 1.8 40.8-4.4-13.9-4.3-40.8-1.8-40.8zm-24.4 136.6c9.7-16.9 18-37 24.7-54.7 8.3 15.1 18.9 27.2 30.1 35.5-20.8 4.3-38.9 13.1-54.8 19.2zm131.6-5s-5 6-37.3-7.8c35.1-2.6 40.9 5.4 37.3 7.8z"/></svg></span>
                   <span>Paper</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2611.21334"
-                   class="external-link button is-normal is-rounded is-dark" rel="noopener" target="_blank">
-                  <span class="icon"><i class="ai ai-arxiv"></i></span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <span class="link-block">
                 <a href="./" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-youtube"></i></span>
+                  <span class="icon"><svg aria-hidden="true" width="1.125em" height="1em" viewBox="0 0 576 512" fill="currentColor"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg></span>
                   <span>Video</span>
                 </a>
               </span>
@@ -162,13 +148,23 @@
       <div class="column is-full-width">
         <h2 class="title is-3">Polarimetric Environment Map dataset</h2>
         <video class="dataset-video" autoplay muted loop playsinline controls
-               preload="metadata" poster="./static/images/dataset-poster.jpg"
+               preload="none" data-src="./static/videos/dataset.mp4" poster="./static/images/dataset-poster.jpg"
                width="1920" height="1080"
                aria-label="Polarimetric Environment Map dataset overview">
-          <source src="./static/videos/dataset.mp4" type="video/mp4">
           Your browser does not support embedded video.
           <a href="./static/videos/dataset.mp4">Download the dataset overview video.</a>
         </video>
+        <noscript><a href="./static/videos/dataset.mp4">Play the dataset overview video</a></noscript>
+        <script>
+          const overview = document.querySelector('.dataset-video');
+          const observer = new IntersectionObserver(entries => {
+            if (!entries.some(entry => entry.isIntersecting)) return;
+            observer.disconnect();
+            overview.src = overview.dataset.src;
+            overview.play().catch(() => {});
+          }, { rootMargin: '120px 0px' });
+          observer.observe(overview);
+        </script>
         <div class="content has-text-justified">
           <p>
             We provide full-sphere panoramas with per-pixel high-dynamic-range RGB Stokes vectors,
@@ -257,26 +253,14 @@
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <a class="icon-link" href="./static/pdfs/paper.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/yongheeoh" class="external-link" disabled rel="noopener" target="_blank">
-        <i class="fab fa-github"></i>
+      <a aria-label="GitHub" class="icon-link external-link" href="https://github.com/yongheeoh" disabled rel="noopener" target="_blank">
+        <svg aria-hidden="true" width="0.96875em" height="1em" viewBox="0 0 496 512" fill="currentColor"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
       </a>
     </div>
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
-          <p>
-            This website is licensed under a <a rel="license noopener"
-              href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            It borrows the <a href="https://github.com/nerfies/nerfies.github.io" rel="noopener" target="_blank">source code</a>
-            of the <a href="https://nerfies.github.io/" rel="noopener" target="_blank">Nerfies</a> project page.
-            We thank the authors for open-sourcing their template.
-          </p>
+          <p>Project page adapted from <a href="https://github.com/nerfies/nerfies.github.io" rel="noopener" target="_blank">Nerfies</a> and licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener" target="_blank">CC BY-SA 4.0</a>.</p>
         </div>
       </div>
     </div>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dataset · penvmap</title>
+<meta name="description" content="Browse real-world polarimetric environment maps, compare intensity and polarization, and download scientific capture data.">
+<script src="../static/js/site-theme.js"></script>
+<link rel="stylesheet" href="../static/css/site-theme.css?v=c6f871513d">
+<link rel="icon" href="../static/images/favicon.png"><link rel="stylesheet" href="atlas.css?v=03960ee672">
+<script defer src="panorama.js?v=3193bbec5a"></script>
+<script defer src="cards.js?v=1b40916c23"></script>
+<script defer src="scenes.js"></script><script defer src="similar.js"></script><script defer src="scene.js?v=ef04820fa5"></script>
+</head>
+<body>
+<header class="site-header"><a class="brand" href="../">penvmap</a>
+<nav aria-label="Site"><a class="current" href="./" aria-current="location">Dataset</a><a href="../mitsuba/">Mitsuba Renderer</a><a href="../renderer/">Web Renderer</a><a href="qa.html">Q&amp;A</a></nav>
+<button id="themeToggle" type="button">
+  <svg class="to-light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+  <svg class="to-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A9 9 0 0 1 9.7 3.5a9 9 0 1 0 10.8 10.8Z"/></svg>
+  <span class="to-light sr-only">Switch to light mode</span>
+  <span class="to-dark sr-only">Switch to dark mode</span>
+</button></header>
+<main class="scene-page">
+  <div class="scene-heading">
+    <h1 id="sceneTitle">Scene</h1>
+    <button type="button" id="detailsToggle" aria-controls="sceneDetails" aria-expanded="false" hidden>Scene info</button>
+  </div>
+  <div id="sceneContent" class="scene-layout" hidden>
+      <div class="stage"><img id="flat" alt="" width="2048" height="1024">
+        <div id="panorama" role="region" aria-label="Interactive panorama" hidden></div>
+        <div class="legend-slot">
+          <figure id="channelLegend" class="channel-legend" hidden>
+            <div class="legend-field"><img id="legendRamp" alt=""></div>
+            <div id="legendTicks"></div>
+          </figure>
+          <div id="viewMode" role="group" aria-label="Preview mode">
+            <button type="button" aria-pressed="true">2D</button>
+            <button type="button" aria-pressed="false">3D</button>
+          </div>
+          <button id="fullscreenToggle" type="button" aria-label="Enter fullscreen" title="Enter fullscreen">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9V3h6m6 0h6v6m0 6v6h-6m-6 0H3v-6"/>
+            </svg>
+          </button>
+        </div>
+        <p id="panoramaStatus" role="status" hidden></p>
+      </div>
+      <div id="previews" class="filmstrip" role="group" aria-label="Scene previews"></div>
+    <section id="sceneDetails" class="details" aria-label="Scene files and metadata">
+      <div class="actions"><a id="download" class="primary"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M9 3h6v7h5l-8 8-8-8h5zM4 20h16v2H4z"/></svg><span id="downloadLabel">Download</span></a><a id="source">Open on Hugging Face</a><a id="renderer" target="_blank" rel="noopener">Open Interactive Viewer</a></div>
+      <dl id="metadata"></dl>
+      <p class="credit">Capture by Yonghee Oh, Ryota Maeda, Yunseong Moon and Seung-Hwan Baek. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+    </section>
+  </div>
+  <section id="similarMaps" aria-labelledby="similarHeading" hidden>
+    <h2 id="similarHeading">Similar environment maps</h2>
+    <div class="similar-grid"></div>
+  </section>
+</main>
+</body></html>

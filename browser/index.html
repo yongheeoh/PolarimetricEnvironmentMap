@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dataset · penvmap</title>
+<meta name="description" content="Browse real-world polarimetric environment maps, compare intensity and polarization, and download scientific capture data.">
+<script src="../static/js/site-theme.js"></script>
+<link rel="stylesheet" href="../static/css/site-theme.css?v=c6f871513d">
+<link rel="icon" href="../static/images/favicon.png"><link rel="stylesheet" href="atlas.css?v=03960ee672">
+<script defer src="cards.js?v=1b40916c23"></script>
+<script defer src="scenes.js"></script><script defer src="atlas.js?v=bd0905742a"></script>
+</head>
+<body class="dataset-page">
+<header class="site-header"><a class="brand" href="../">penvmap</a>
+<nav aria-label="Site"><a class="current" href="./" aria-current="page">Dataset</a><a href="../mitsuba/">Mitsuba Renderer</a><a href="../renderer/">Web Renderer</a><a href="qa.html">Q&amp;A</a></nav>
+<button id="themeToggle" type="button">
+  <svg class="to-light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+  <svg class="to-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A9 9 0 0 1 9.7 3.5a9 9 0 1 0 10.8 10.8Z"/></svg>
+  <span class="to-light sr-only">Switch to light mode</span>
+  <span class="to-dark sr-only">Switch to dark mode</span>
+</button></header>
+<div class="layout">
+<aside aria-label="Dataset filters"><h2>Environment</h2><div id="settings"></div><h2 class="polarization-heading">Polarization <a class="capture-help" href="qa.html#linear-stokes-captures" aria-label="Why two capture cameras?" title="Why two capture cameras?"><span aria-hidden="true">?</span></a></h2><div id="collections"></div>
+<section id="weatherGroup"><h2>Weather</h2><div id="weather" role="group" aria-label="Weather"></div></section><h2>Time of day</h2><div id="time" role="group" aria-label="Time of day"></div>
+<a class="repo" href="https://huggingface.co/datasets/yongheeoh/penvmap">Dataset on Hugging Face</a></aside>
+<main aria-label="Scene dataset">
+<p id="count" role="status"></p><div id="cards"></div><p id="empty" hidden>No matching scenes. <button id="reset">Clear filters</button></p></main></div>
+</body></html>
