@@ -139,9 +139,16 @@ function renderScene(s) {
   const viewerSource = s.dataset + '/resolve/' + s.revision + '/' + duffFile;
   renderer.search = new URLSearchParams({ src: viewerSource, view: 'panorama', name: s.title });
   byId('renderer').href = renderer.href;
-  byId('download').href = exr + '?download=true';
-  byId('downloadLabel').textContent = 'Download · '+(s.bytes/1e6).toFixed(1)+' MB';
-  byId('source').href = s.dataset+'/blob/'+s.revision+'/'+s.file;
+  const basis = byId('downloadBasis');
+  function updateDownload() {
+    const duff = basis.value === 'duff';
+    const bytes = duff ? s.duffBytes : s.bytes;
+    byId('download').href = (duff ? viewerSource : exr) + '?download=true';
+    byId('downloadSize').textContent = (bytes / 1e6).toFixed(1) + ' MB';
+    byId('source').href = s.dataset + '/blob/' + s.revision + '/' + (duff ? duffFile : s.file);
+  }
+  basis.onchange = updateDownload;
+  updateDownload();
   byId('sceneContent').hidden = false;
   renderPreviews(s);
 }

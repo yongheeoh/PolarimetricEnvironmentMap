@@ -6,10 +6,10 @@
 <meta name="description" content="Browse real-world polarimetric environment maps, compare intensity and polarization, and download scientific capture data.">
 <script src="../static/js/site-theme.js?v=f1b732e342"></script>
 <link rel="stylesheet" href="../static/css/site-theme.css?v=c6f871513d">
-<link rel="icon" href="../static/images/favicon.png"><link rel="stylesheet" href="atlas.css?v=03960ee672">
+<link rel="icon" href="../static/images/favicon.png"><link rel="stylesheet" href="atlas.css?v=2e07747de2">
 <script defer src="panorama.js?v=3193bbec5a"></script>
 <script defer src="cards.js?v=1b40916c23"></script>
-<script defer src="scenes.js"></script><script defer src="similar.js"></script><script defer src="scene.js?v=ef04820fa5"></script>
+<script defer src="scenes.js?v=d0b3f67ef6"></script><script defer src="similar.js"></script><script defer src="scene.js?v=38c0503680"></script>
 </head>
 <body>
 <header class="site-header"><a class="brand" href="../">penvmap</a>
@@ -47,7 +47,7 @@
       </div>
       <div id="previews" class="filmstrip" role="group" aria-label="Scene previews"></div>
     <section id="sceneDetails" class="details" aria-label="Scene files and metadata">
-      <div class="actions"><a id="download" class="primary"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M9 3h6v7h5l-8 8-8-8h5zM4 20h16v2H4z"/></svg><span id="downloadLabel">Download</span></a><a id="source">Open on Hugging Face</a><a id="renderer" target="_blank" rel="noopener">Open Interactive Viewer</a></div>
+      <div class="actions"><div class="download-options primary"><div class="basis-select"><select id="downloadBasis" aria-label="Download polarization basis"><option value="thetaphi">θφ</option><option value="duff">Duff</option></select></div><a id="download" class="primary"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M9 3h6v7h5l-8 8-8-8h5zM4 20h16v2H4z"/></svg><span>Download · <span id="downloadSize"></span></span></a></div><a id="source">Open on Hugging Face</a><a id="renderer" target="_blank" rel="noopener">Open Interactive Viewer</a></div>
       <dl id="metadata"></dl>
       <p class="credit">Capture by Yonghee Oh, Ryota Maeda, Yunseong Moon and Seung-Hwan Baek. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
     </section>

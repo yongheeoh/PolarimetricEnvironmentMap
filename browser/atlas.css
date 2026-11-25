@@ -50,8 +50,22 @@ aside .polarization-heading { display: flex; align-items: center; gap: 3px }
 .actions { flex-direction: column; align-items: stretch; gap: 8px; font-size: 14px }
 .actions a { text-align: center; padding: 10px; text-decoration: none; border: 1px solid var(--line) }
 .actions a:hover { text-decoration: underline }
-#download { display: flex; align-items: center; justify-content: center; gap: 8px }
+.download-options { display: flex; justify-content: center; border: 1px solid var(--line) }
+.basis-select { position: relative; display: flex; border-right: 1px solid var(--line) }
+.basis-select select { appearance: none; color: inherit; background: transparent; border: 0; padding: 0 7px; text-align: center; font-size: 14px }
+.basis-select option { background: Canvas; color: CanvasText; text-align: start }
+@supports (appearance: base-select) {
+  .basis-select select, .basis-select select::picker(select) { appearance: base-select }
+  .basis-select select { align-items: center; justify-content: center }
+  .basis-select select::picker-icon, .basis-select option::checkmark { display: none }
+  .basis-select select::picker(select) { padding: 0; border: 1px solid var(--line) }
+  .basis-select option { justify-content: flex-start; padding: 4px 7px }
+  .basis-select option:checked { background: var(--selected) }
+}
+.basis-select::after { content: ""; position: absolute; pointer-events: none; left: 50%; bottom: 6px; width: 4px; height: 4px; border: solid currentColor; border-width: 0 1px 1px 0; transform: translateX(-50%) rotate(45deg) }
+#download { display: flex; align-items: center; justify-content: center; gap: 8px; border: 0; padding-inline: 7px; white-space: nowrap; padding-block: 0; min-height: calc(1.45em + 20px) }
 #download svg { flex: none }
+#downloadSize { font-weight: 400 }
 .primary { background: light-dark(#355f80, #cbe4f7); color: light-dark(#ffffff, #142432); font-weight: 650 }
 .scene-heading { display: flex; align-items: center; justify-content: space-between }
 #detailsToggle { display: none; margin-right: var(--gutter); padding: 6px 10px; border: 1px solid var(--line); flex-shrink: 0 }
