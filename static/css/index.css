@@ -400,3 +400,11 @@ body {
   aspect-ratio: 16 / 9;
   background: #000;
 }
+
+.project-tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
